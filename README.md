@@ -1,1 +1,5 @@
-# reactn-native-turbo-sensors
+# React native turbo sensors
+
+## License
+
+[MIT](LICENSE)
