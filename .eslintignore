@@ -4,6 +4,7 @@ dist/
 lib/
 web-build/
 web-report/
+*.config.js
 
 .expo/
 .yarn/

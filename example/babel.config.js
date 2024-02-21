@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const alias = {};
-const PACKAGES_DIR = path.join(__dirname, 'packages');
+const PACKAGES_DIR = path.join(__dirname, '..', 'packages');
 fs.readdirSync(PACKAGES_DIR).forEach(name => {
   if (typeof name === 'string') {
     alias[`@serserm/${name}`] = path.join(PACKAGES_DIR, name, 'src');
@@ -15,7 +15,7 @@ module.exports = {
     [
       'module-resolver',
       {
-        extensions: ['.tsx', '.ts', '.js', '.jsx', '.json'],
+        extensions: ['.tsx', '.ts', '.js', '.json'],
         alias,
       },
     ],
