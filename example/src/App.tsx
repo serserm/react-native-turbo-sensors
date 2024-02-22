@@ -1,18 +1,23 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { multiply } from '@serserm/react-native-turbo-sensors';
+import { SensorTypes, useSensors } from '@serserm/react-native-turbo-sensors';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const sensor = useSensors({
+    sensor: SensorTypes.accelerometer,
+    onChange: event => {
+      console.log('list', event);
+    },
+  });
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+  useEffect(() => {
+    sensor.send();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result</Text>
     </View>
   );
 }

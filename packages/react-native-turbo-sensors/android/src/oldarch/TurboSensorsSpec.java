@@ -9,5 +9,11 @@ abstract class TurboSensorsSpec extends ReactContextBaseJavaModule {
     super(context);
   }
 
-  public abstract void multiply(double a, double b, Promise promise);
+  public abstract void addListener(String eventName);
+
+  public abstract void removeListeners(double count);
+
+  public abstract void send(String sensor);
+
+  public abstract void state(String sensor, Promise promise);
 }

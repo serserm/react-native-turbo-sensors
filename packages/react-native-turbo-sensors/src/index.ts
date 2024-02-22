@@ -1,1 +1,2 @@
-export * from './core';
+export * from './types';
+export { useSensors } from './useSensors';
