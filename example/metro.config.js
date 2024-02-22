@@ -5,10 +5,6 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const modules = ['react', 'react-native'];
 
-const { getMetroTools } = require('react-native-monorepo-tools');
-
-const monorepoMetroTools = getMetroTools();
-
 /**
  * Metro configuration
  * https://facebook.github.io/metro/docs/configuration
@@ -16,7 +12,7 @@ const monorepoMetroTools = getMetroTools();
  * @type {import('metro-config').MetroConfig}
  */
 const config = {
-  watchFolders: monorepoMetroTools.watchFolders,
+  watchFolders: [root],
   resetCache: true,
 
   // We need to make sure that only one version is loaded for peerDependencies
