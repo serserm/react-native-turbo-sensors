@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { SensorTypes, useSensors } from '@serserm/react-native-turbo-sensors';
+import { SensorName, useSensor } from '@serserm/react-native-turbo-sensors';
 
 export default function App() {
-  const sensor = useSensors({
-    sensor: SensorTypes.accelerometer,
-    onChange: event => {
-      console.log('list', event);
-    },
+  const sensor = useSensor({
+    sensor: SensorName.rotation,
+    // onChange: (event: object) => {
+    //   console.log('list', event);
+    // },
   });
 
   useEffect(() => {
-    sensor.send();
+    sensor.isAvailable().then(res => {
+      console.log('isAvailable', res);
+    });
   }, []);
 
   return (
