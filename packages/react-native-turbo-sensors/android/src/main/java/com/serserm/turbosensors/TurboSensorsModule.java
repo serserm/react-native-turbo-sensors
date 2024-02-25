@@ -9,10 +9,6 @@ import androidx.annotation.Nullable;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.ReadableArray;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -45,13 +41,6 @@ public class TurboSensorsModule extends TurboSensorsSpec {
   @NonNull
   public String getName() {
     return NAME;
-  }
-
-  private void sendEvent(String eventName,
-                         @Nullable WritableMap params) {
-    reactContext
-        .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-        .emit(eventName, params);
   }
 
   @ReactMethod
