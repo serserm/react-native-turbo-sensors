@@ -1,14 +1,12 @@
 
 #ifdef RCT_NEW_ARCH_ENABLED
 #import "RNTurboSensorsSpec.h"
-#import <React/RCTEventEmitter.h>
 
-@interface TurboSensors : NSObject <NativeTurboSensorsSpec, RCTEventEmitter>
+@interface TurboSensors : NSObject <NativeTurboSensorsSpec>
 #else
 #import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
 
-@interface TurboSensors : NSObject <RCTBridgeModule, RCTEventEmitter>
+@interface TurboSensors : NSObject <RCTBridgeModule>
 #endif
 
 @end
