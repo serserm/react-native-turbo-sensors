@@ -1,4 +1,3 @@
-#import <React/RCTLog.h>
 #import "TurboSensors.h"
 
 @implementation TurboSensors
@@ -18,7 +17,6 @@ RCT_EXPORT_METHOD(multiply:(double)a
                   reject:(RCTPromiseRejectBlock)reject)
 {
     NSNumber *result = @(a * b);
-    RCTLogInfo(@"log %@ * %@", a, b);
     resolve(result);
 }
 

@@ -11,6 +11,7 @@ export interface Spec extends TurboModule {
   // setInterval(sensor: string, newInterval: number): void;
   //
   // stopListening(sensor: string): void;
+
   multiply(a: number, b: number): Promise<number>;
 }
 
