@@ -23,7 +23,7 @@
     "codegen": "yarn example codegen",
     "start": "yarn example start",
     "android": "yarn example android",
-    "ios": "yarn example ios"
+    "ios": "yarn example pod && yarn example ios"
   },
   "devDependencies": {
     "@evilmartians/lefthook": "^1.6.1",

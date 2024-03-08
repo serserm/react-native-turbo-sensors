@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import {
-  multiply,
-  SensorName,
-  useSensor,
-} from '@serserm/react-native-turbo-sensors';
+import { SensorName, useSensor } from '@serserm/react-native-turbo-sensors';
 
 export default function App() {
-  useSensor({
+  const sensor = useSensor({
     sensor: SensorName.accelerometer,
     onChange: (event: object) => {
       console.log('list', event);
@@ -16,11 +12,8 @@ export default function App() {
   });
 
   useEffect(() => {
-    // sensor.isAvailable().then(res => {
-    //   console.log('isAvailable', res);
-    // });
-    multiply(3, 7).then((res: number) => {
-      console.log('res', res);
+    sensor.isAvailable().then(res => {
+      console.log('isAvailable', res);
     });
   }, []);
 

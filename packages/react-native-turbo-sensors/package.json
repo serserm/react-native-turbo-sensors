@@ -46,7 +46,6 @@
   "homepage": "https://github.com/serserm/react-native-turbo-sensors#readme",
   "scripts": {
     "clean": "del-cli android/build lib",
-    "pod": "npx pod-install",
     "build": "bob build"
   },
   "peerDependencies": {

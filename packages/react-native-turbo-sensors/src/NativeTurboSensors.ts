@@ -6,13 +6,13 @@ export interface Spec extends TurboModule {
 
   removeListeners(count: number): void;
 
-  // isAvailable(sensor: string): Promise<boolean>;
-  //
-  // setInterval(sensor: string, newInterval: number): void;
-  //
-  // stopListening(sensor: string): void;
+  isAvailable(sensor: string): Promise<boolean>;
 
-  multiply(a: number, b: number): Promise<number>;
+  setInterval(sensor: string, newInterval: number): void;
+
+  startListening(sensor: string): void;
+
+  stopListening(sensor: string): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('TurboSensors');

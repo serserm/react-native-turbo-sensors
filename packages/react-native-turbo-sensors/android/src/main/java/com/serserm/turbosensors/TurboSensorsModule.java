@@ -45,10 +45,6 @@ public class TurboSensorsModule extends TurboSensorsSpec {
 
   @ReactMethod
   public void addListener(String eventName) {
-    TurboSensor sensorT = sensorMap.get(eventName);
-    if (sensorT != null) {
-      sensorT.startListening();
-    }
     if (listenerCount == 0) {
       // Set up any upstream listeners or background tasks as necessary
     }
@@ -85,6 +81,14 @@ public class TurboSensorsModule extends TurboSensorsSpec {
     TurboSensor sensorT = sensorMap.get(sensor + "Event");
     if (sensorT != null) {
       sensorT.setInterval((int) newInterval);
+    }
+  }
+
+  @ReactMethod
+  public void startListening(String sensor) {
+    TurboSensor sensorT = sensorMap.get(sensor + "Event");
+    if (sensorT != null) {
+      sensorT.startListening();
     }
   }
 

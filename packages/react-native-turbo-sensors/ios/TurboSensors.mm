@@ -11,13 +11,72 @@ RCT_EXPORT_MODULE()
   [self sendEventWithName:eventName body:body];
 }
 
-RCT_EXPORT_METHOD(multiply:(double)a
-                  b:(double)b
+// Will be called when this module's first listener is added.
+-(void)startObserving {
+    hasListeners = YES;
+    // Set up any upstream listeners or background tasks as necessary
+}
+
+// Will be called when this module's last listener is removed, or on dealloc.
+-(void)stopObserving {
+    // Remove upstream listeners, stop unnecessary background tasks
+    hasListeners = NO;
+    // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+    if (self->_motionManager) {
+//         [self stopListening];
+    }
+}
+
+RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
                   resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject)
-{
-    NSNumber *result = @(a * b);
-    resolve(result);
+                  reject:(RCTPromiseRejectBlock)reject) {
+    resolve(@YES);
+//     if([self->_motionManager isAccelerometerAvailable])
+//     {
+//         /* Start the accelerometer if it is not active already */
+//         if([self->_motionManager isAccelerometerActive] == NO)
+//         {
+//             resolve(@YES);
+//         } else {
+//             reject(@"-1", @"Accelerometer is not active", nil);
+//         }
+//     }
+//     else
+//     {
+//         reject(@"-1", @"Accelerometer is not available", nil);
+//     }
+}
+
+RCT_EXPORT_METHOD(setInterval:(NSString *)sensor
+                  newInterval:(double)newInterval) {
+//   double intervalInSeconds = newInterval / 1000;
+//
+//   [self->_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
+}
+
+RCT_EXPORT_METHOD(startListening:(NSString *)sensor) {
+//   [self->_motionManager startAccelerometerUpdates];
+//
+//   /* Receive the accelerometer data on this block */
+//   [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
+//                                            withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
+//   {
+//      double x = accelerometerData.acceleration.x;
+//      double y = accelerometerData.acceleration.y;
+//      double z = accelerometerData.acceleration.z;
+//      double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:accelerometerData.timestamp];
+//
+//      [self sendEvent:@"RNSensorsAccelerometer" body:@{
+//                                                        @"x" : [NSNumber numberWithDouble:x],
+//                                                        @"y" : [NSNumber numberWithDouble:y],
+//                                                        @"z" : [NSNumber numberWithDouble:z],
+//                                                        @"timestamp" : [NSNumber numberWithDouble:timestamp]
+//                                                    }];
+//   }];
+}
+
+RCT_EXPORT_METHOD(stopListening:(NSString *)sensor) {
+// [self->_motionManager stopAccelerometerUpdates];
 }
 
 // Don't compile this code when we build for the old architecture.
