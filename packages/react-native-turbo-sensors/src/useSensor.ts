@@ -24,6 +24,8 @@ export function useSensor(params: SensorParamsType): UseSensorType {
 
   return {
     isAvailable,
-    value: value.current,
+    get value() {
+      return value.current;
+    },
   };
 }

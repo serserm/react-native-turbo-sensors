@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 import { SensorName, useSensor } from '@serserm/react-native-turbo-sensors';
 
@@ -17,9 +17,14 @@ export default function App() {
     });
   }, []);
 
+  function onPress() {
+    console.log(sensor.value);
+  }
+
   return (
     <View style={styles.container}>
       <Text>Result</Text>
+      <Button title={'Press'} onPress={onPress} />
     </View>
   );
 }
