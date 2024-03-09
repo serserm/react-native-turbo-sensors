@@ -5,10 +5,10 @@ import { SensorName, useSensor } from '@serserm/react-native-turbo-sensors';
 
 export default function App() {
   const sensor = useSensor({
-    sensor: SensorName.rotation,
-    // onChange: (event: object) => {
-    //   console.log('list', event);
-    // },
+    sensor: SensorName.accelerometer,
+    onChange: (event: object) => {
+      console.log('list', event);
+    },
   });
 
   useEffect(() => {

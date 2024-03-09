@@ -27,6 +27,7 @@ export class Sensor {
       `${this.#name}Event`,
       listener,
     );
+    TurboSensors.startListening(this.#name);
   };
 
   stopListening = (): void => {

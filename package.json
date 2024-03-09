@@ -7,7 +7,7 @@
     "packages/*",
     "example"
   ],
-  "packageManager": "yarn@4.1.0",
+  "packageManager": "yarn@4.1.1",
   "engines": {
     "node": ">=18.0.0",
     "yarn": ">=4.0.0"
@@ -23,7 +23,7 @@
     "codegen": "yarn example codegen",
     "start": "yarn example start",
     "android": "yarn example android",
-    "ios": "yarn example ios"
+    "ios": "yarn example pod && yarn example ios"
   },
   "devDependencies": {
     "@evilmartians/lefthook": "^1.6.1",
