@@ -5,15 +5,15 @@
 #import "RNTurboSensorsSpec.h"
 
 @interface TurboSensors : RCTEventEmitter <NativeTurboSensorsSpec> {
-  bool hasListeners;
-  NSMutableDictionary *_sensorMap;
+    bool hasListeners;
+    NSMutableDictionary *_sensorMap;
 }
 #else
 #import <React/RCTBridgeModule.h>
 
 @interface TurboSensors : RCTEventEmitter <RCTBridgeModule> {
-  bool hasListeners;
-  NSMutableDictionary *_sensorMap;
+    bool hasListeners;
+    NSMutableDictionary *_sensorMap;
 }
 
 - (void)isAvailable:(NSString *)sensor
@@ -31,21 +31,21 @@
 
 @end
 
-//@interface MotionSensors : NSObject {
-//  CMMotionManager *_motionManager;
-//  TurboSensors *_module;
-//  bool hasListeners;
-//}
-//
-//- (instancetype)initWithContext:(NSString *)sensorName module:(TurboSensors *)module;
-//
-//- (void)isAvailable:(RCTPromiseResolveBlock)resolve
-//                  reject:(RCTPromiseRejectBlock)reject;
-//
-//- (void)setInterval:(double)newInterval;
-//
-//- (void)startListening;
-//
-//- (void)stopListening;
-//
-//@end
+@interface MotionSensors : NSObject {
+    CMMotionManager *_motionManager;
+    TurboSensors *_module;
+    bool hasListeners;
+}
+
+- (instancetype)initWithContext:(NSString *)sensorName module:(TurboSensors *)module;
+
+- (void)isAvailable:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject;
+
+- (void)setInterval:(double)newInterval;
+
+- (void)startListening;
+
+- (void)stopListening;
+
+@end

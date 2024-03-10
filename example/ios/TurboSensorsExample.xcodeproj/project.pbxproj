@@ -10,8 +10,8 @@
 		00E356F31AD99517003FC87E /* TurboSensorsExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TurboSensorsExampleTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2B9A4BFC837CCE33C8C001BA /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8FACD182617F27CCB9B3BE6 /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a */; };
-		4A9F7AE8104C35906AA5944F /* libPods-TurboSensorsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F683DA925D87B8DF07CC03A /* libPods-TurboSensorsExample.a */; };
+		345791310022FAFAA410E3DA /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A4D23DC4F9493621207FF3A /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a */; };
+		F10D215C51B26E2E665DCBC9 /* libPods-TurboSensorsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23693071DE1CF1E4EC685F17 /* libPods-TurboSensorsExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +34,14 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = TurboSensorsExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TurboSensorsExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TurboSensorsExample/main.m; sourceTree = "<group>"; };
-		1AF4AA11F9A09C097B9BF4AA /* Pods-TurboSensorsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurboSensorsExample.release.xcconfig"; path = "Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample.release.xcconfig"; sourceTree = "<group>"; };
-		3ACC3CCD3A6AE8278395B6A4 /* Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig"; path = "Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		6F683DA925D87B8DF07CC03A /* libPods-TurboSensorsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TurboSensorsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		235E7FF53F414D34321C18CF /* Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig"; path = "Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		23693071DE1CF1E4EC685F17 /* libPods-TurboSensorsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TurboSensorsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A4D23DC4F9493621207FF3A /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TurboSensorsExample-TurboSensorsExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		617F93C4CAEBFB6A2D29A261 /* Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TurboSensorsExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D8FACD182617F27CCB9B3BE6 /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TurboSensorsExample-TurboSensorsExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E51D904A81E6EF3F3CED043C /* Pods-TurboSensorsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurboSensorsExample.debug.xcconfig"; path = "Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample.debug.xcconfig"; sourceTree = "<group>"; };
+		AD8C0FC085DDDC495BA3225A /* Pods-TurboSensorsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurboSensorsExample.release.xcconfig"; path = "Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FF4427C4D1A68398EE2CC899 /* Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF08C630D395253684F56D4B /* Pods-TurboSensorsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurboSensorsExample.debug.xcconfig"; path = "Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B9A4BFC837CCE33C8C001BA /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a in Frameworks */,
+				345791310022FAFAA410E3DA /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A9F7AE8104C35906AA5944F /* libPods-TurboSensorsExample.a in Frameworks */,
+				F10D215C51B26E2E665DCBC9 /* libPods-TurboSensorsExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,8 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				6F683DA925D87B8DF07CC03A /* libPods-TurboSensorsExample.a */,
-				D8FACD182617F27CCB9B3BE6 /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a */,
+				23693071DE1CF1E4EC685F17 /* libPods-TurboSensorsExample.a */,
+				2A4D23DC4F9493621207FF3A /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,10 +138,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E51D904A81E6EF3F3CED043C /* Pods-TurboSensorsExample.debug.xcconfig */,
-				1AF4AA11F9A09C097B9BF4AA /* Pods-TurboSensorsExample.release.xcconfig */,
-				FF4427C4D1A68398EE2CC899 /* Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig */,
-				3ACC3CCD3A6AE8278395B6A4 /* Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig */,
+				FF08C630D395253684F56D4B /* Pods-TurboSensorsExample.debug.xcconfig */,
+				AD8C0FC085DDDC495BA3225A /* Pods-TurboSensorsExample.release.xcconfig */,
+				617F93C4CAEBFB6A2D29A261 /* Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig */,
+				235E7FF53F414D34321C18CF /* Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -153,12 +153,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "TurboSensorsExampleTests" */;
 			buildPhases = (
-				90887E9925E6FF2D0B4C73C8 /* [CP] Check Pods Manifest.lock */,
+				2D9590D81E1D4025EFDEBE87 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				BB225B92C0E02ED6B8D186CF /* [CP] Embed Pods Frameworks */,
-				9156168A4F2ABC53262A1908 /* [CP] Copy Pods Resources */,
+				5125BEAC5B095279BF094CDB /* [CP] Embed Pods Frameworks */,
+				7274850741C12EC9303BA7AB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -174,13 +174,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "TurboSensorsExample" */;
 			buildPhases = (
-				3E493F17F427314CAD555449 /* [CP] Check Pods Manifest.lock */,
+				51EA4B43ADA960E788E75F5A /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				C5677113F1BBDEE14B89BBB4 /* [CP] Embed Pods Frameworks */,
-				85FCB7EB08C75754E0A16A6D /* [CP] Copy Pods Resources */,
+				793B90B36D3CD3CCA577F160 /* [CP] Embed Pods Frameworks */,
+				8D5C7A7948305715DC490892 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -261,46 +261,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		3E493F17F427314CAD555449 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TurboSensorsExample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		85FCB7EB08C75754E0A16A6D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		90887E9925E6FF2D0B4C73C8 /* [CP] Check Pods Manifest.lock */ = {
+		2D9590D81E1D4025EFDEBE87 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -322,24 +283,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9156168A4F2ABC53262A1908 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB225B92C0E02ED6B8D186CF /* [CP] Embed Pods Frameworks */ = {
+		5125BEAC5B095279BF094CDB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -356,7 +300,46 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C5677113F1BBDEE14B89BBB4 /* [CP] Embed Pods Frameworks */ = {
+		51EA4B43ADA960E788E75F5A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TurboSensorsExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7274850741C12EC9303BA7AB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample-TurboSensorsExampleTests/Pods-TurboSensorsExample-TurboSensorsExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		793B90B36D3CD3CCA577F160 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -371,6 +354,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D5C7A7948305715DC490892 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TurboSensorsExample/Pods-TurboSensorsExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -406,7 +406,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF4427C4D1A68398EE2CC899 /* Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig */;
+			baseConfigurationReference = 617F93C4CAEBFB6A2D29A261 /* Pods-TurboSensorsExample-TurboSensorsExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -433,7 +433,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3ACC3CCD3A6AE8278395B6A4 /* Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig */;
+			baseConfigurationReference = 235E7FF53F414D34321C18CF /* Pods-TurboSensorsExample-TurboSensorsExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -457,7 +457,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E51D904A81E6EF3F3CED043C /* Pods-TurboSensorsExample.debug.xcconfig */;
+			baseConfigurationReference = FF08C630D395253684F56D4B /* Pods-TurboSensorsExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -488,7 +488,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AF4AA11F9A09C097B9BF4AA /* Pods-TurboSensorsExample.release.xcconfig */;
+			baseConfigurationReference = AD8C0FC085DDDC495BA3225A /* Pods-TurboSensorsExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

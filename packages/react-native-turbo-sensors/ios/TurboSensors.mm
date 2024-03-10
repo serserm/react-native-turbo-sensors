@@ -3,44 +3,48 @@
 @implementation TurboSensors
 RCT_EXPORT_MODULE()
 
-// - (id)init {
-//   self = [super init];
-//   if (self) {
-//     _sensorMap = [NSMutableDictionary dictionary];
+- (id)init {
+    self = [super init];
+    if (self) {
+    _sensorMap = [NSMutableDictionary dictionary];
 //     [_sensorMap setObject:[[MotionSensors alloc] initWithContext:@"accelerometer"] forKey:@"accelerometer"];
-//   }
-//   return self;
-// }
+    }
+    return self;
+}
+
++ (BOOL)requiresMainQueueSetup
+{
+    return NO;
+}
 
 - (NSArray<NSString *> *)supportedEvents {
-  return @[@"accelerometerEvent"];
+    return @[@"accelerometerEvent"];
 }
 
 - (void)sendEvent:(NSString *)eventName body:(id)body {
-  [self sendEventWithName:eventName body:body];
+    [self sendEventWithName:eventName body:body];
 }
 
 // Will be called when this module's first listener is added.
 - (void)startObserving {
-  hasListeners = YES;
-  // Set up any upstream listeners or background tasks as necessary
+    hasListeners = YES;
+    // Set up any upstream listeners or background tasks as necessary
 }
 
 // Will be called when this module's last listener is removed, or on dealloc.
 - (void)stopObserving {
-  // Remove upstream listeners, stop unnecessary background tasks
-  hasListeners = NO;
-  // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+    // Remove upstream listeners, stop unnecessary background tasks
+    hasListeners = NO;
+    // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
 }
 
 RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject) {
-  NSLog(@"isAvailable");
 //   if (_sensorMap objectForKey:sensor] != nil) {
 //     [_sensorMap objectForKey:sensor isAvailable ];
 //   }
-  resolve(@YES);
+    resolve(@YES);
 }
 
 RCT_EXPORT_METHOD(setInterval:(NSString *)sensor
@@ -67,7 +71,7 @@ RCT_EXPORT_METHOD(stopListening:(NSString *)sensor) {
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params
 {
-  return std::make_shared<facebook::react::NativeTurboSensorsSpecJSI>(params);
+    return std::make_shared<facebook::react::NativeTurboSensorsSpecJSI>(params);
 }
 #endif
 
@@ -75,75 +79,70 @@ RCT_EXPORT_METHOD(stopListening:(NSString *)sensor) {
 
 // _____ MotionSensors _____
 
-// @implementation MotionSensors
+@implementation MotionSensors
+
+- (id)initWithContext:(NSString *)sensorName
+                  module:(TurboSensors *)module {
+    self = [super init];
+
+    if (self) {
+        _module = module;
+    }
+    return self;
+}
+
+- (void)isAvailable:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject {
+//     if([self->_motionManager isAccelerometerAvailable])
+//     {
+//         /* Start the accelerometer if it is not active already */
+//         if([self->_motionManager isAccelerometerActive] == NO)
+//         {
+//             resolve(@YES);
+//         } else {
+//             reject(@"-1", @"Accelerometer is not active", nil);
+//         }
+//     }
+//     else
+//     {
+//         reject(@"-1", @"Accelerometer is not available", nil);
+//     }
+}
+
+- (void)setInterval:(double)newInterval {
+//   double intervalInSeconds = newInterval / 1000;
 //
-// - (id)initWithContext:(NSString *)sensorName
-//                   module:(TurboSensors *)module {
-//   self = [super init];
+//   [self->_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
+}
+
+- (void)startListening {
+    hasListeners = YES;
+//   [self->_motionManager startAccelerometerUpdates];
 //
-//   if (self) {
-//     NSLog(@"init");
-//     _module = module;
-//   }
-//   return self;
-// }
+//   /* Receive the accelerometer data on this block */
+//   [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
+//                                            withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
+//   {
+//      double x = accelerometerData.acceleration.x;
+//      double y = accelerometerData.acceleration.y;
+//      double z = accelerometerData.acceleration.z;
+//      double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:accelerometerData.timestamp];
 //
-// - (void)isAvailable:(RCTPromiseResolveBlock)resolve
-//                   reject:(RCTPromiseRejectBlock)reject {
-//   NSLog(@"isAvailable");
-// //     if([self->_motionManager isAccelerometerAvailable])
-// //     {
-// //         /* Start the accelerometer if it is not active already */
-// //         if([self->_motionManager isAccelerometerActive] == NO)
-// //         {
-// //             resolve(@YES);
-// //         } else {
-// //             reject(@"-1", @"Accelerometer is not active", nil);
-// //         }
-// //     }
-// //     else
-// //     {
-// //         reject(@"-1", @"Accelerometer is not available", nil);
-// //     }
-// }
-//
-// - (void)setInterval:(double)newInterval {
-//   NSLog(@"setInterval");
-// //   double intervalInSeconds = newInterval / 1000;
-// //
-// //   [self->_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
-// }
-//
-// - (void)startListening {
-//   hasListeners = YES;
-//   NSLog(@"startListening");
-// //   [self->_motionManager startAccelerometerUpdates];
-// //
-// //   /* Receive the accelerometer data on this block */
-// //   [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
-// //                                            withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
-// //   {
-// //      double x = accelerometerData.acceleration.x;
-// //      double y = accelerometerData.acceleration.y;
-// //      double z = accelerometerData.acceleration.z;
-// //      double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:accelerometerData.timestamp];
-// //
-// //      [self sendEvent:@"RNSensorsAccelerometer" body:@{
-// //                                                        @"x" : [NSNumber numberWithDouble:x],
-// //                                                        @"y" : [NSNumber numberWithDouble:y],
-// //                                                        @"z" : [NSNumber numberWithDouble:z],
-// //                                                        @"timestamp" : [NSNumber numberWithDouble:timestamp]
-// //                                                    }];
-// //   }];
-// }
-//
-// - (void)stopListening {
-//   hasListeners = NO;
-//   NSLog(@"stopListening");
-//   if (self->_motionManager) {
-// //     [self stopListening];
-// //     [self->_motionManager stopAccelerometerUpdates];
-//   }
-// }
-//
-// @end
+//      [self sendEvent:@"RNSensorsAccelerometer" body:@{
+//                                                        @"x" : [NSNumber numberWithDouble:x],
+//                                                        @"y" : [NSNumber numberWithDouble:y],
+//                                                        @"z" : [NSNumber numberWithDouble:z],
+//                                                        @"timestamp" : [NSNumber numberWithDouble:timestamp]
+//                                                    }];
+//   }];
+}
+
+- (void)stopListening {
+    hasListeners = NO;
+    if (self->_motionManager) {
+//     [self stopListening];
+//     [self->_motionManager stopAccelerometerUpdates];
+    }
+}
+
+@end
