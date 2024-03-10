@@ -1,5 +1,4 @@
 #import "TurboSensors.h"
-// #import "AccelerometerSensor.h"
 
 @implementation TurboSensors
 RCT_EXPORT_MODULE()
@@ -8,7 +7,7 @@ RCT_EXPORT_MODULE()
 //   self = [super init];
 //   if (self) {
 //     _sensorMap = [NSMutableDictionary dictionary];
-//     [_sensorMap setObject:[[AccelerometerSensor alloc] initWithContext:@"accelerometer"] forKey:@"accelerometer"];
+//     [_sensorMap setObject:[[MotionSensors alloc] initWithContext:@"accelerometer"] forKey:@"accelerometer"];
 //   }
 //   return self;
 // }
@@ -37,6 +36,7 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject) {
+  NSLog(@"isAvailable");
 //   if (_sensorMap objectForKey:sensor] != nil) {
 //     [_sensorMap objectForKey:sensor isAvailable ];
 //   }
@@ -72,3 +72,78 @@ RCT_EXPORT_METHOD(stopListening:(NSString *)sensor) {
 #endif
 
 @end
+
+// _____ MotionSensors _____
+
+// @implementation MotionSensors
+//
+// - (id)initWithContext:(NSString *)sensorName
+//                   module:(TurboSensors *)module {
+//   self = [super init];
+//
+//   if (self) {
+//     NSLog(@"init");
+//     _module = module;
+//   }
+//   return self;
+// }
+//
+// - (void)isAvailable:(RCTPromiseResolveBlock)resolve
+//                   reject:(RCTPromiseRejectBlock)reject {
+//   NSLog(@"isAvailable");
+// //     if([self->_motionManager isAccelerometerAvailable])
+// //     {
+// //         /* Start the accelerometer if it is not active already */
+// //         if([self->_motionManager isAccelerometerActive] == NO)
+// //         {
+// //             resolve(@YES);
+// //         } else {
+// //             reject(@"-1", @"Accelerometer is not active", nil);
+// //         }
+// //     }
+// //     else
+// //     {
+// //         reject(@"-1", @"Accelerometer is not available", nil);
+// //     }
+// }
+//
+// - (void)setInterval:(double)newInterval {
+//   NSLog(@"setInterval");
+// //   double intervalInSeconds = newInterval / 1000;
+// //
+// //   [self->_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
+// }
+//
+// - (void)startListening {
+//   hasListeners = YES;
+//   NSLog(@"startListening");
+// //   [self->_motionManager startAccelerometerUpdates];
+// //
+// //   /* Receive the accelerometer data on this block */
+// //   [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
+// //                                            withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
+// //   {
+// //      double x = accelerometerData.acceleration.x;
+// //      double y = accelerometerData.acceleration.y;
+// //      double z = accelerometerData.acceleration.z;
+// //      double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:accelerometerData.timestamp];
+// //
+// //      [self sendEvent:@"RNSensorsAccelerometer" body:@{
+// //                                                        @"x" : [NSNumber numberWithDouble:x],
+// //                                                        @"y" : [NSNumber numberWithDouble:y],
+// //                                                        @"z" : [NSNumber numberWithDouble:z],
+// //                                                        @"timestamp" : [NSNumber numberWithDouble:timestamp]
+// //                                                    }];
+// //   }];
+// }
+//
+// - (void)stopListening {
+//   hasListeners = NO;
+//   NSLog(@"stopListening");
+//   if (self->_motionManager) {
+// //     [self stopListening];
+// //     [self->_motionManager stopAccelerometerUpdates];
+//   }
+// }
+//
+// @end
