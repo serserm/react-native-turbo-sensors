@@ -21,7 +21,7 @@ public class TurboSensor implements SensorEventListener {
   private final Sensor sensor;
   private final int sensorType;
   private final SensorManager sensorManager;
-  private int interval = SensorManager.SENSOR_DELAY_NORMAL;
+  private int interval = 200000;
   private boolean isListenerRegistered = false;
 
   TurboSensor(ReactApplicationContext context, String sensorName) {
