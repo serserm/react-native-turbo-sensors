@@ -1,7 +1,7 @@
 import { type EmitterSubscription, NativeEventEmitter } from 'react-native';
 
 import { TurboSensors } from './TurboSensors';
-import type { SensorListenerType, SensorName } from './types';
+import type { ListenerType, SensorName } from './types';
 
 export class Sensor {
   readonly #name: SensorName;
@@ -21,7 +21,7 @@ export class Sensor {
       : TurboSensors.isAvailable(this.#name);
   };
 
-  startListening = (listener: SensorListenerType) => {
+  startListening = (listener: ListenerType) => {
     const eventEmitter = new NativeEventEmitter(TurboSensors);
     this.#subscription = eventEmitter.addListener(
       `${this.#name}Event`,
