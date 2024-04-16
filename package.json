@@ -20,6 +20,7 @@
     "build": "lerna run build --no-private",
     "release": "lerna publish --no-private",
     "example": "yarn workspace react-native-turbo-sensors-example",
+    "app": "yarn workspace expo-turbo-sensors-example",
     "codegen": "yarn example codegen",
     "start": "yarn example start",
     "android": "yarn example android",
