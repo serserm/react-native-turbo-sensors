@@ -50,6 +50,8 @@ public class TurboSensor implements SensorEventListener {
 
   private int getType(String sensorName) {
     switch (sensorName) {
+      case "rotation":
+        return Sensor.TYPE_ROTATION_VECTOR;
       case "accelerometer":
         return Sensor.TYPE_ACCELEROMETER;
       case "gravity":
@@ -71,7 +73,7 @@ public class TurboSensor implements SensorEventListener {
       case "humidity":
         return Sensor.TYPE_RELATIVE_HUMIDITY;
       default:
-        return Sensor.TYPE_ROTATION_VECTOR;
+        return Sensor.TYPE_ALL;
     }
     // TYPE_STEP_DETECTOR
     // TYPE_STEP_COUNTER
