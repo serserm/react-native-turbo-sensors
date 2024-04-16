@@ -50,6 +50,7 @@ public class TurboSensor implements SensorEventListener {
 
   private int getType(String sensorName) {
     switch (sensorName) {
+      // Motion sensors
       case "rotation":
         return Sensor.TYPE_ROTATION_VECTOR;
       case "accelerometer":
@@ -58,14 +59,16 @@ public class TurboSensor implements SensorEventListener {
         return Sensor.TYPE_GRAVITY;
       case "gyroscope":
         return Sensor.TYPE_GYROSCOPE;
-      case "magnetometer":
-        return Sensor.TYPE_MAGNETIC_FIELD;
-      case "barometer":
-        return Sensor.TYPE_PRESSURE;
       case "acceleration":
         return Sensor.TYPE_LINEAR_ACCELERATION;
+      // Position sensors
+      case "magnetometer":
+        return Sensor.TYPE_MAGNETIC_FIELD;
       case "proximity":
         return Sensor.TYPE_PROXIMITY;
+      // Environment sensors
+      case "barometer":
+        return Sensor.TYPE_PRESSURE;
       case "light":
         return Sensor.TYPE_LIGHT;
       case "temperature":
@@ -75,16 +78,6 @@ public class TurboSensor implements SensorEventListener {
       default:
         return Sensor.TYPE_ALL;
     }
-    // TYPE_STEP_DETECTOR
-    // TYPE_STEP_COUNTER
-    // TYPE_STATIONARY_DETECT
-    // TYPE_SIGNIFICANT_MOTION
-    // TYPE_MOTION_DETECT
-    // TYPE_HINGE_ANGLE
-    // TYPE_HEART_RATE
-    // TYPE_HEART_BEAT
-    // TYPE_HEAD_TRACKER
-    // TYPE_HEADING
   }
 
   private double sensorTimestampToEpochMilliseconds(long elapsedTime) {
