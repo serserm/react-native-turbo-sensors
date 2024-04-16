@@ -6,7 +6,7 @@ import { SensorName, useSensor } from '@serserm/react-native-turbo-sensors';
 export default function App() {
   const sensor = useSensor({
     sensor: SensorName.accelerometer,
-    onChange: (event: object) => {
+    onChange: event => {
       console.log('list', event);
     },
   });
