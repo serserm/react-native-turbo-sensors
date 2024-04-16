@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "expo-turbo-sensors-example",
+    "name": "Sensors example",
     "slug": "expo-turbo-sensors-example",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,11 +11,10 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.turbosensors"
     },
     "android": {
       "adaptiveIcon": {
