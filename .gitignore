@@ -36,7 +36,7 @@ android.iml
 
 # Cocoapods
 #
-ios/Pods/
+
 
 # Ruby
 vendor/
