@@ -1,4 +1,5 @@
 #import "TurboSensors.h"
+#import "MotionSensor.h"
 
 @implementation TurboSensors
 RCT_EXPORT_MODULE()
@@ -41,10 +42,12 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject) {
-//   if (_sensorMap objectForKey:sensor] != nil) {
-//     [_sensorMap objectForKey:sensor isAvailable ];
-//   }
-    resolve(@YES);
+   if ([_sensorMap objectForKey:sensor] != nil) {
+//     [_sensorMap objectForKey:sensor isAvailable];
+       resolve(@YES);
+   } else {
+       resolve(@NO);
+   }
 }
 
 RCT_EXPORT_METHOD(setInterval:(NSString *)sensor
@@ -74,6 +77,5 @@ RCT_EXPORT_METHOD(stopListening:(NSString *)sensor) {
     return std::make_shared<facebook::react::NativeTurboSensorsSpecJSI>(params);
 }
 #endif
-
 
 @end

@@ -1,16 +1,16 @@
-#import "MotionSensors.h"
+#import "MotionSensor.h"
 
 @implementation MotionSensors
 
-//- (id)initWithContext:(NSString *)sensorName
-//                  module:(TurboSensors *)module {
-//    self = [super init];
+// - (instancetype)init:(NSString *)sensorName
+//                   module:(TurboSensors *)module {
+//     self = [super init];
 //
-//    if (self) {
-//        _module = module;
-//    }
-//    return self;
-//}
+//     if (self) {
+//         _module = module;
+//     }
+//     return self;
+// }
 
 - (void)isAvailable {
 //     if([self->_motionManager isAccelerometerAvailable])

@@ -15,17 +15,6 @@
     NSMutableDictionary *_sensorMap;
 }
 
-//- (void)isAvailable:(NSString *)sensor
-//                  resolve:(RCTPromiseResolveBlock)resolve
-//                  reject:(RCTPromiseRejectBlock)reject;
-//
-//- (void)setInterval:(NSString *)sensor
-//                  newInterval:(double)newInterval;
-//
-//- (void)startListening:(NSString *)sensor;
-//
-//- (void)stopListening:(NSString *)sensor;
-
 #endif
 
 @end
