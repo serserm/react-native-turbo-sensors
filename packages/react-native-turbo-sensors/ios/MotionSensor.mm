@@ -2,45 +2,41 @@
 
 @implementation MotionSensors
 
-// - (instancetype)init:(NSString *)sensorName
-//                   module:(TurboSensors *)module {
-//     self = [super init];
-//
-//     if (self) {
-//         _module = module;
-//     }
-//     return self;
-// }
+ - (id)init:(NSString *)sensorName {
+     _sensorName = sensorName;
+     _motionManager = [[CMMotionManager alloc] init];
+//     _queue = [[NSOperationQueue alloc] init];
+     _intervalInSeconds = 0.1;
+     return self;
+ }
 
-- (void)isAvailable {
-//     if([self->_motionManager isAccelerometerAvailable])
-//     {
-//         /* Start the accelerometer if it is not active already */
-//         if([self->_motionManager isAccelerometerActive] == NO)
-//         {
-//             resolve(@YES);
-//         } else {
-//             reject(@"-1", @"Accelerometer is not active", nil);
-//         }
-//     }
-//     else
-//     {
-//         reject(@"-1", @"Accelerometer is not available", nil);
-//     }
+- (BOOL)isAvailable {
+//    if ([_sensorName isEqualToString:@"accelerometer"]) {
+//        return _motionManager.accelerometerAvailable;
+//    } else if ([_sensorName isEqualToString:@"gyroscope"]) {
+//        return _motionManager.gyroAvailable;
+//    } else if ([_sensorName isEqualToString:@"magnetometer"]) {
+//        return _motionManager.magnetometerAvailable;
+//    } else if ([_sensorName isEqualToString:@"gravity"]) {
+//        return _motionManager.deviceMotionAvailable;
+//    }
+    return NO;
 }
 
 - (void)setInterval:(double)newInterval {
-//   double intervalInSeconds = newInterval / 1000;
-//
-//   [self->_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
+//   _intervalInSeconds = newInterval / 1000;
+
+//   [_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
 }
 
 - (void)startListening {
-    hasListeners = YES;
-//   [self->_motionManager startAccelerometerUpdates];
+//    if (!_hasListeners) {
+//        _hasListeners = YES;
+//    }
+//   [_motionManager startAccelerometerUpdates];
 //
 //   /* Receive the accelerometer data on this block */
-//   [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
+//   [_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
 //                                            withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
 //   {
 //      double x = accelerometerData.acceleration.x;
@@ -58,11 +54,10 @@
 }
 
 - (void)stopListening {
-    hasListeners = NO;
-    if (self->_motionManager) {
-//     [self stopListening];
-//     [self->_motionManager stopAccelerometerUpdates];
-    }
+//    if (_hasListeners && _motionManager) {
+//     [_motionManager stopAccelerometerUpdates];
+//        _hasListeners = NO;
+//    }
 }
 
 @end

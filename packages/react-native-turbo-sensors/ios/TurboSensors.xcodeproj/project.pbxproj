@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		926DEF952BD0488F001B33AB /* TurboSensors.mm in Sources */ = {isa = PBXBuildFile; fileRef = 920751802BCE8A2E00091A9D /* TurboSensors.mm */; };
 		926DEF972BD0489D001B33AB /* TurboSensors.h in Headers */ = {isa = PBXBuildFile; fileRef = 9207517F2BCE8A2E00091A9D /* TurboSensors.h */; };
-		926DEF982BD048A0001B33AB /* MotionSensor.h in Headers */ = {isa = PBXBuildFile; fileRef = 926DEF842BCFF4BC001B33AB /* MotionSensor.h */; };
-		926DEF992BD048A3001B33AB /* MotionSensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 926DEF822BCFF485001B33AB /* MotionSensor.mm */; };
+		9285A7162C31D40200B60622 /* MotionSensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9285A7142C31D40200B60622 /* MotionSensor.mm */; };
+		9285A7172C31D40200B60622 /* MotionSensor.h in Headers */ = {isa = PBXBuildFile; fileRef = 9285A7152C31D40200B60622 /* MotionSensor.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		920751752BCE892600091A9D /* TurboSensors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TurboSensors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9207517F2BCE8A2E00091A9D /* TurboSensors.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = TurboSensors.h; sourceTree = "<group>"; tabWidth = 4; };
 		920751802BCE8A2E00091A9D /* TurboSensors.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TurboSensors.mm; sourceTree = "<group>"; tabWidth = 4; };
-		926DEF822BCFF485001B33AB /* MotionSensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MotionSensor.mm; sourceTree = "<group>"; tabWidth = 4; };
-		926DEF842BCFF4BC001B33AB /* MotionSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = MotionSensor.h; sourceTree = "<group>"; tabWidth = 4; };
+		9285A7142C31D40200B60622 /* MotionSensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MotionSensor.mm; sourceTree = "<group>"; };
+		9285A7152C31D40200B60622 /* MotionSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionSensor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,10 +35,10 @@
 		9207516B2BCE892600091A9D = {
 			isa = PBXGroup;
 			children = (
+				9285A7152C31D40200B60622 /* MotionSensor.h */,
+				9285A7142C31D40200B60622 /* MotionSensor.mm */,
 				9207517F2BCE8A2E00091A9D /* TurboSensors.h */,
-				926DEF842BCFF4BC001B33AB /* MotionSensor.h */,
 				920751802BCE8A2E00091A9D /* TurboSensors.mm */,
-				926DEF822BCFF485001B33AB /* MotionSensor.mm */,
 				920751762BCE892600091A9D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,7 +58,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				926DEF982BD048A0001B33AB /* MotionSensor.h in Headers */,
+				9285A7172C31D40200B60622 /* MotionSensor.h in Headers */,
 				926DEF972BD0489D001B33AB /* TurboSensors.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,7 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				926DEF952BD0488F001B33AB /* TurboSensors.mm in Sources */,
-				926DEF992BD048A3001B33AB /* MotionSensor.mm in Sources */,
+				9285A7162C31D40200B60622 /* MotionSensor.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

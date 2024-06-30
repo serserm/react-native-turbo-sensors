@@ -4,15 +4,13 @@
 #import "RNTurboSensorsSpec.h"
 
 @interface TurboSensors : RCTEventEmitter <NativeTurboSensorsSpec> {
-    bool hasListeners;
-    NSMutableDictionary *_sensorMap;
+    NSMutableDictionary * _sensorMap;
 }
 #else
 #import <React/RCTBridgeModule.h>
 
 @interface TurboSensors : RCTEventEmitter <RCTBridgeModule> {
-    bool hasListeners;
-    NSMutableDictionary *_sensorMap;
+    NSMutableDictionary * _sensorMap;
 }
 
 #endif
