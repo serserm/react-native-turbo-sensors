@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		926E18D12C3C31740039D13C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 926E18CC2C3C29650039D13C /* CoreMotion.framework */; };
 		ACF5F263853CE2048E8A2B46 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FEF42494B4D7B21868529B11 /* PrivacyInfo.xcprivacy */; };
 		FC352F29C5665B1E6551080A /* libPods-TurboSensorsExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5098B77D0A3D5A5F47A05CD9 /* libPods-TurboSensorsExample.a */; };
 		FC4D858F4193B1B5FAF73E15 /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 523CA53A868B6674491C3E0B /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a */; };
@@ -45,8 +46,9 @@
 		5098B77D0A3D5A5F47A05CD9 /* libPods-TurboSensorsExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TurboSensorsExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		523CA53A868B6674491C3E0B /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TurboSensorsExample-TurboSensorsExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TurboSensorsExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		926E18CC2C3C29650039D13C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FEF42494B4D7B21868529B11 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = TurboSensorsExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		FEF42494B4D7B21868529B11 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = TurboSensorsExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				926E18D12C3C31740039D13C /* CoreMotion.framework in Frameworks */,
 				FC352F29C5665B1E6551080A /* libPods-TurboSensorsExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +107,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				926E18CC2C3C29650039D13C /* CoreMotion.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5098B77D0A3D5A5F47A05CD9 /* libPods-TurboSensorsExample.a */,
 				523CA53A868B6674491C3E0B /* libPods-TurboSensorsExample-TurboSensorsExampleTests.a */,
