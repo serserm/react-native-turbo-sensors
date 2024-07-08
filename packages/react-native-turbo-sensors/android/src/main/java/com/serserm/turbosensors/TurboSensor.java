@@ -61,9 +61,9 @@ public class TurboSensor implements SensorEventListener {
         return Sensor.TYPE_GYROSCOPE;
       case "acceleration":
         return Sensor.TYPE_LINEAR_ACCELERATION;
-      // Position sensors
       case "magnetometer":
         return Sensor.TYPE_MAGNETIC_FIELD;
+      // Position sensors
       case "proximity":
         return Sensor.TYPE_PROXIMITY;
       // Environment sensors

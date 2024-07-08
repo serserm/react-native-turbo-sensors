@@ -6,12 +6,21 @@
 @interface TurboSensors : RCTEventEmitter <NativeTurboSensorsSpec> {
     NSMutableDictionary * _sensorMap;
 }
+
+- (double)sensorTimestamp:(NSTimeInterval)timestamp;
+
+- (void)sendEvent:(NSString *)eventName body:(id)body;
+
 #else
 #import <React/RCTBridgeModule.h>
 
 @interface TurboSensors : RCTEventEmitter <RCTBridgeModule> {
     NSMutableDictionary * _sensorMap;
 }
+
+- (double)sensorTimestamp:(NSTimeInterval)timestamp;
+
+- (void)sendEvent:(NSString *)eventName body:(id)body;
 
 #endif
 

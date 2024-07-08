@@ -8,10 +8,11 @@ RCT_EXPORT_MODULE();
     self = [super init];
     if (self) {
          _sensorMap = [NSMutableDictionary dictionary];
-        [_sensorMap setObject:[[MotionSensor alloc] initWithSensorName:@"accelerometer"] forKey:@"accelerometer"];
-        [_sensorMap setObject:[[MotionSensor alloc] initWithSensorName:@"gyroscope"] forKey:@"gyroscope"];
-        [_sensorMap setObject:[[MotionSensor alloc] initWithSensorName:@"magnetometer"] forKey:@"magnetometer"];
-        [_sensorMap setObject:[[MotionSensor alloc] initWithSensorName:@"gravity"] forKey:@"gravity"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"accelerometer" delegate:self] forKey:@"accelerometer"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"gyroscope" delegate:self] forKey:@"gyroscope"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"magnetometer" delegate:self] forKey:@"magnetometer"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"gravity" delegate:self] forKey:@"gravity"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"rotation" delegate:self] forKey:@"rotation"];
     }
     return self;
 }
@@ -21,7 +22,14 @@ RCT_EXPORT_MODULE();
 }
 
 - (NSArray<NSString *> *)supportedEvents {
-    return @[@"accelerometerEvent"];
+    return @[
+        @"accelerometerEvent",
+        @"gyroscopeEvent",
+        @"magnetometerEvent",
+        @"gravityEvent",
+        @"rotationEvent",
+        @"accelerationEvent"
+    ];
 }
 
 - (void)sendEvent:(NSString *)eventName body:(id)body {
@@ -37,6 +45,10 @@ RCT_EXPORT_MODULE();
 - (void)stopObserving {
     // Remove upstream listeners, stop unnecessary background tasks
     // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+}
+
+- (double)sensorTimestamp:(NSTimeInterval)timestamp {
+    return floor(([[NSDate date] timeIntervalSince1970] + (timestamp - [[NSProcessInfo processInfo] systemUptime])) * 1000);
 }
 
 RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
