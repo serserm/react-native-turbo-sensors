@@ -1,17 +1,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreMotion/CoreMotion.h>
 
-@interface MotionSensors : NSObject {
-    CMMotionManager * _motionManager;
-//    NSOperationQueue * _queue;
+@interface MotionSensor : NSObject
 
-    NSString * _sensorName;
-    bool _hasListeners;
-    double _intervalInSeconds;
-}
+@property (nonatomic, strong) CMMotionManager *motionManager;
+@property (nonatomic, copy) NSString *sensorName;
+@property (nonatomic, assign) BOOL hasListeners;
+@property (nonatomic, assign) double intervalInSeconds;
 
-//- (instancetype)init:(NSString *)sensorName module:(TurboSensors *)module;
-- (id)init:(NSString *)sensorName;
+- (instancetype)initWithSensorName:(NSString *)sensorName;
 
 - (BOOL)isAvailable;
 

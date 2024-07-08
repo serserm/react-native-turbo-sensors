@@ -1,23 +1,22 @@
 #import "TurboSensors.h"
-//#import "MotionSensor.h"
+#import "MotionSensor.h"
 
 @implementation TurboSensors
 RCT_EXPORT_MODULE();
 
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
-        _sensorMap = [NSMutableDictionary dictionary];
-//        [_sensorMap setObject:[[MotionSensors alloc] init:@"accelerometer"] forKey:@"accelerometer"];
-//        [_sensorMap setObject:[[MotionSensors alloc] init:@"gyroscope"] forKey:@"gyroscope"];
-//        [_sensorMap setObject:[[MotionSensors alloc] init:@"magnetometer"] forKey:@"magnetometer"];
-//        [_sensorMap setObject:[[MotionSensors alloc] init:@"gravity"] forKey:@"gravity"];
+         _sensorMap = [NSMutableDictionary dictionary];
+        [_sensorMap setObject:[[MotionSensor alloc] initWithSensorName:@"accelerometer"] forKey:@"accelerometer"];
+        [_sensorMap setObject:[[MotionSensor alloc] initWithSensorName:@"gyroscope"] forKey:@"gyroscope"];
+        [_sensorMap setObject:[[MotionSensor alloc] initWithSensorName:@"magnetometer"] forKey:@"magnetometer"];
+        [_sensorMap setObject:[[MotionSensor alloc] initWithSensorName:@"gravity"] forKey:@"gravity"];
     }
     return self;
 }
 
-+ (BOOL)requiresMainQueueSetup
-{
++ (BOOL)requiresMainQueueSetup {
     return NO;
 }
 
@@ -43,31 +42,35 @@ RCT_EXPORT_MODULE();
 RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject) {
-//   if ([_sensorMap objectForKey:sensor] != nil) {
-//       resolve(@[_sensorMap objectForKey:sensor isAvailable]);
-       resolve(@YES);
-//   } else {
-//       reject(@"sensor_not_found", @"Sensor not found", nil);
-//   }
+    MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
+    if (sensorObject != nil) {
+        BOOL available = [sensorObject isAvailable];
+        resolve(@(available));
+    } else {
+        reject(@"sensor_not_found", @"Sensor not found", nil);
+    }
 }
 
 RCT_EXPORT_METHOD(setInterval:(NSString *)sensor
                   newInterval:(double)newInterval) {
-//   if ([_sensorMap objectForKey:sensor] != nil) {
-//     [_sensorMap objectForKey:sensor setInterval:newInterval];
-//   }
+    MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
+    if (sensorObject != nil) {
+        [sensorObject setInterval:newInterval];
+    }
 }
 
 RCT_EXPORT_METHOD(startListening:(NSString *)sensor) {
-//   if ([_sensorMap objectForKey:sensor] != nil) {
-//     [_sensorMap objectForKey:sensor startListening];
-//   }
+    MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
+    if (sensorObject != nil) {
+        [sensorObject startListening];
+    }
 }
 
 RCT_EXPORT_METHOD(stopListening:(NSString *)sensor) {
-//   if ([_sensorMap objectForKey:sensor] != nil) {
-//     [_sensorMap objectForKey:sensor stopListening];
-//   }
+    MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
+    if (sensorObject != nil) {
+        [sensorObject stopListening];
+    }
 }
 
 // Don't compile this code when we build for the old architecture.
