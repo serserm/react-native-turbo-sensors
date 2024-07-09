@@ -1,31 +1,34 @@
 import { useEffect, useRef } from 'react';
 
 import { Sensor } from './Sensor';
-import type { SensorParamsType, SensorValueType, UseSensorType } from './types';
+import type { SensorParamsType, UseSensorType } from './types';
 
 export function useSensor(params: SensorParamsType): UseSensorType {
-  const sensor = useRef<Sensor>(new Sensor(params.sensor));
-  const value = useRef<SensorValueType>(null);
+  const sensor = useRef<Sensor>(new Sensor());
 
   useEffect(() => {
-    sensor.current.startListening((data: any) => {
-      value.current = data?.value;
-      params.onChange?.(data);
-    });
+    sensor.current.startListening(
+      ({ type, name, errorCode, errorMessage, data, timestamp }) => {
+        switch (type) {
+          case 'onChanged':
+            params.onChanged?.({ name, data, timestamp });
+            break;
+          case 'onError':
+            params.onError?.({ name, errorCode, errorMessage });
+            break;
+        }
+      },
+    );
 
     return () => {
       sensor.current.stopListening();
     };
   }, []);
 
-  async function isAvailable(): Promise<boolean> {
-    return sensor.current.isAvailable();
-  }
-
   return {
-    isAvailable,
-    get value() {
-      return value.current;
-    },
+    isAvailable: sensor.current.isAvailable,
+    setInterval: sensor.current.setInterval,
+    startSensor: sensor.current.startSensor,
+    stopSensor: sensor.current.stopSensor,
   };
 }

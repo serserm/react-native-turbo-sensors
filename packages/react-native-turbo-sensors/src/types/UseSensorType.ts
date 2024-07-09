@@ -1,6 +1,8 @@
-import type { SensorValueType } from './SensorValueType';
+import type { SensorNameType } from './SensorNameType';
 
 export interface UseSensorType {
-  isAvailable: () => Promise<boolean>;
-  value: SensorValueType;
+  isAvailable: (name: SensorNameType) => Promise<boolean>;
+  setInterval: (name: SensorNameType, interval: number) => void;
+  startSensor: (name: SensorNameType) => void;
+  stopSensor: (name: SensorNameType) => void;
 }

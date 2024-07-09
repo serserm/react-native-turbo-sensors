@@ -89,7 +89,7 @@ public class TurboSensor implements SensorEventListener {
     int currentType = sensorEvent.sensor.getType();
     double tempMs = (double) System.currentTimeMillis();
     WritableMap params = Arguments.createMap();
-    WritableMap value = Arguments.createMap();
+    WritableMap data = Arguments.createMap();
 
     switch (currentType) {
       case Sensor.TYPE_ROTATION_VECTOR:
@@ -100,30 +100,30 @@ public class TurboSensor implements SensorEventListener {
         SensorManager.getRotationMatrixFromVector(rotation, sensorEvent.values);
         SensorManager.getOrientation(rotation, orientation);
 
-        value.putDouble("qw", quaternion[0]);
-        value.putDouble("qx", quaternion[1]);
-        value.putDouble("qy", quaternion[2]);
-        value.putDouble("qz", quaternion[3]);
+        data.putDouble("qw", quaternion[0]);
+        data.putDouble("qx", quaternion[1]);
+        data.putDouble("qy", quaternion[2]);
+        data.putDouble("qz", quaternion[3]);
 
-        value.putDouble("yaw", orientation[0]);
-        value.putDouble("pitch", orientation[1]);
-        value.putDouble("roll", orientation[2]);
+        data.putDouble("yaw", orientation[0]);
+        data.putDouble("pitch", orientation[1]);
+        data.putDouble("roll", orientation[2]);
 
-        params.putMap("value", value);
+        params.putMap("data", data);
         break;
       case Sensor.TYPE_ACCELEROMETER:
       case Sensor.TYPE_GRAVITY:
       case Sensor.TYPE_GYROSCOPE:
       case Sensor.TYPE_MAGNETIC_FIELD:
       case Sensor.TYPE_LINEAR_ACCELERATION:
-        value.putDouble("x", sensorEvent.values[0]);
-        value.putDouble("y", sensorEvent.values[1]);
-        value.putDouble("z", sensorEvent.values[2]);
+        data.putDouble("x", sensorEvent.values[0]);
+        data.putDouble("y", sensorEvent.values[1]);
+        data.putDouble("z", sensorEvent.values[2]);
 
-        params.putMap("value", value);
+        params.putMap("data", data);
         break;
       default:
-        params.putDouble("value", sensorEvent.values[0]);
+        params.putDouble("data", sensorEvent.values[0]);
         break;
     }
 

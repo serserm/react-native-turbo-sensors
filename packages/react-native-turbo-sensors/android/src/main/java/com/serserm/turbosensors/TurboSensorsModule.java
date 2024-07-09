@@ -85,7 +85,7 @@ public class TurboSensorsModule extends TurboSensorsSpec {
   }
 
   @ReactMethod
-  public void startListening(String sensor) {
+  public void startSensor(String sensor) {
     TurboSensor sensorT = sensorMap.get(sensor);
     if (sensorT != null) {
       sensorT.startListening();
@@ -93,7 +93,7 @@ public class TurboSensorsModule extends TurboSensorsSpec {
   }
 
   @ReactMethod
-  public void stopListening(String sensor) {
+  public void stopSensor(String sensor) {
     TurboSensor sensorT = sensorMap.get(sensor);
     if (sensorT != null) {
       sensorT.stopListening();

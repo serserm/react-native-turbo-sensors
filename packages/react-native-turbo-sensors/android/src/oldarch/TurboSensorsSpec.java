@@ -17,7 +17,7 @@ abstract class TurboSensorsSpec extends ReactContextBaseJavaModule {
 
   public abstract void setInterval(String sensor, double newInterval);
 
-  public abstract void startListening(String sensor);
+  public abstract void startSensor(String sensor);
 
-  public abstract void stopListening(String sensor);
+  public abstract void stopSensor(String sensor);
 }
