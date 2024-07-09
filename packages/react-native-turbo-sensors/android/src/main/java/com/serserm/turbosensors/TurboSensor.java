@@ -51,18 +51,18 @@ public class TurboSensor implements SensorEventListener {
   private int getType(String sensorName) {
     switch (sensorName) {
       // Motion sensors
-      case "rotation":
-        return Sensor.TYPE_ROTATION_VECTOR;
       case "accelerometer":
         return Sensor.TYPE_ACCELEROMETER;
-      case "gravity":
-        return Sensor.TYPE_GRAVITY;
       case "gyroscope":
         return Sensor.TYPE_GYROSCOPE;
-      case "acceleration":
-        return Sensor.TYPE_LINEAR_ACCELERATION;
       case "magnetometer":
         return Sensor.TYPE_MAGNETIC_FIELD;
+      case "gravity":
+        return Sensor.TYPE_GRAVITY;
+      case "rotation":
+        return Sensor.TYPE_ROTATION_VECTOR;
+      case "acceleration":
+        return Sensor.TYPE_LINEAR_ACCELERATION;
       // Position sensors
       case "proximity":
         return Sensor.TYPE_PROXIMITY;
