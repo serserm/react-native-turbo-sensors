@@ -23,18 +23,11 @@ RCT_EXPORT_MODULE();
 }
 
 - (NSArray<NSString *> *)supportedEvents {
-    return @[
-        @"accelerometerEvent",
-        @"gyroscopeEvent",
-        @"magnetometerEvent",
-        @"gravityEvent",
-        @"rotationEvent",
-        @"accelerationEvent"
-    ];
+    return @[@"sensorsEvent"];
 }
 
-- (void)sendEvent:(NSString *)eventName body:(id)body {
-    [self sendEventWithName:eventName body:body];
+- (void)sendEvent:(id)body {
+    [self sendEventWithName:@"sensorsEvent" body:body];
 }
 
 // Will be called when this module's first listener is added.

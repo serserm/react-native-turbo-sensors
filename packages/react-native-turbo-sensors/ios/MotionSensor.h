@@ -6,6 +6,7 @@
 
 @property (nonatomic, weak) TurboSensors *delegate;
 @property (nonatomic, strong) CMMotionManager *motionManager;
+@property (nonatomic, strong) CMAltimeter *altimeter;
 @property (nonatomic, copy) NSString *sensorName;
 @property (nonatomic, assign) BOOL hasListeners;
 @property (nonatomic, assign) double intervalInSeconds;

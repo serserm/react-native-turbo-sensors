@@ -9,7 +9,7 @@
 
 - (double)sensorTimestamp:(NSTimeInterval)timestamp;
 
-- (void)sendEvent:(NSString *)eventName body:(id)body;
+- (void)sendEvent:(id)body;
 
 #else
 #import <React/RCTBridgeModule.h>
@@ -20,7 +20,7 @@
 
 - (double)sensorTimestamp:(NSTimeInterval)timestamp;
 
-- (void)sendEvent:(NSString *)eventName body:(id)body;
+- (void)sendEvent:(id)body;
 
 #endif
 

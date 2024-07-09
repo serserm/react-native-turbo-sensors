@@ -34,7 +34,7 @@ public class TurboSensor implements SensorEventListener {
 
   @Override
   public void onSensorChanged(SensorEvent sensorEvent) {
-    sendEvent(name + "Event", getParams(sensorEvent));
+    sendEvent("sensorsEvent", getParams(sensorEvent));
   }
 
   @Override
@@ -129,6 +129,7 @@ public class TurboSensor implements SensorEventListener {
 
     params.putDouble("timestamp", sensorTimestampToEpochMilliseconds(sensorEvent.timestamp));
     params.putString("name", name);
+    params.putString("type", "onChanged");
 
     return params;
   }
@@ -138,20 +139,47 @@ public class TurboSensor implements SensorEventListener {
   }
 
   public void startListening() {
-    if (!isListenerRegistered && sensorManager != null && sensor != null) {
+    if (!isAvailable()) {
+      WritableMap params = Arguments.createMap();
+      params.putInt("errorCode", 1);
+      params.putString("errorMessage", "Not available");
+      params.putString("name", name);
+      params.putString("type", "onError");
+      sendEvent("sensorsEvent", params);
+      return;
+    }
+    if (!isListenerRegistered && sensorManager != null) {
       sensorManager.registerListener(this, sensor, interval);
       isListenerRegistered = true;
     }
   }
 
   public void stopListening() {
-    if (isListenerRegistered && sensorManager != null && sensor != null) {
+    if (!isAvailable()) {
+      WritableMap params = Arguments.createMap();
+      params.putInt("errorCode", 1);
+      params.putString("errorMessage", "Not available");
+      params.putString("name", name);
+      params.putString("type", "onError");
+      sendEvent("sensorsEvent", params);
+      return;
+    }
+    if (isListenerRegistered && sensorManager != null) {
       sensorManager.unregisterListener(this);
       isListenerRegistered = false;
     }
   }
 
   public void setInterval(int newInterval) {
+    if (!isAvailable()) {
+      WritableMap params = Arguments.createMap();
+      params.putInt("errorCode", 1);
+      params.putString("errorMessage", "Not available");
+      params.putString("name", name);
+      params.putString("type", "onError");
+      sendEvent("sensorsEvent", params);
+      return;
+    }
     if (newInterval >= 0) {
       // Milliseconds to Microseconds conversion
       interval = newInterval * 1000;

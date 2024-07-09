@@ -23,10 +23,11 @@ export class Sensor {
 
   startListening = (listener: ListenerType) => {
     const eventEmitter = new NativeEventEmitter(TurboSensors);
-    this.#subscription = eventEmitter.addListener(
-      `${this.#name}Event`,
-      listener,
-    );
+    this.#subscription = eventEmitter.addListener(`sensorsEvent`, params => {
+      if (this.#name === params.name) {
+        listener(params);
+      }
+    });
     TurboSensors.startListening(this.#name);
   };
 
