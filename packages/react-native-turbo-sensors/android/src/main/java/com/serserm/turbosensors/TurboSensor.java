@@ -17,7 +17,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 public class TurboSensor implements SensorEventListener {
   private ReactApplicationContext reactContext;
 
-  private final String name;
+  private final String sensorName;
   private final Sensor sensor;
   private final int sensorType;
   private final SensorManager sensorManager;
@@ -26,7 +26,7 @@ public class TurboSensor implements SensorEventListener {
 
   TurboSensor(ReactApplicationContext context, String sensorName) {
     this.reactContext = context;
-    this.name = sensorName;
+    this.sensorName = sensorName;
     this.sensorType = getType(sensorName);
     this.sensorManager = (SensorManager) context.getSystemService(reactContext.SENSOR_SERVICE);
     this.sensor = sensorManager.getDefaultSensor(sensorType);
@@ -128,7 +128,7 @@ public class TurboSensor implements SensorEventListener {
     }
 
     params.putDouble("timestamp", sensorTimestampToEpochMilliseconds(sensorEvent.timestamp));
-    params.putString("name", name);
+    params.putString("name", sensorName);
     params.putString("type", "onChanged");
 
     return params;
@@ -143,7 +143,7 @@ public class TurboSensor implements SensorEventListener {
       WritableMap params = Arguments.createMap();
       params.putInt("errorCode", 1);
       params.putString("errorMessage", "Not available");
-      params.putString("name", name);
+      params.putString("name", sensorName);
       params.putString("type", "onError");
       sendEvent("sensorsEvent", params);
       return;
@@ -159,7 +159,7 @@ public class TurboSensor implements SensorEventListener {
       WritableMap params = Arguments.createMap();
       params.putInt("errorCode", 1);
       params.putString("errorMessage", "Not available");
-      params.putString("name", name);
+      params.putString("name", sensorName);
       params.putString("type", "onError");
       sendEvent("sensorsEvent", params);
       return;
@@ -175,7 +175,7 @@ public class TurboSensor implements SensorEventListener {
       WritableMap params = Arguments.createMap();
       params.putInt("errorCode", 1);
       params.putString("errorMessage", "Not available");
-      params.putString("name", name);
+      params.putString("name", sensorName);
       params.putString("type", "onError");
       sendEvent("sensorsEvent", params);
       return;
