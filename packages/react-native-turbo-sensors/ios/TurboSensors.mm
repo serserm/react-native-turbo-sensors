@@ -7,7 +7,8 @@ RCT_EXPORT_MODULE();
 - (instancetype)init {
     self = [super init];
     if (self) {
-         _sensorMap = [NSMutableDictionary dictionary];
+        _hasListeners = NO;
+        _sensorMap = [NSMutableDictionary dictionary];
         [_sensorMap setObject:[[MotionSensor alloc] init:@"accelerometer" delegate:self] forKey:@"accelerometer"];
         [_sensorMap setObject:[[MotionSensor alloc] init:@"gyroscope" delegate:self] forKey:@"gyroscope"];
         [_sensorMap setObject:[[MotionSensor alloc] init:@"magnetometer" delegate:self] forKey:@"magnetometer"];
@@ -27,18 +28,22 @@ RCT_EXPORT_MODULE();
 }
 
 - (void)sendEvent:(id)body {
-    [self sendEventWithName:@"sensorsEvent" body:body];
+    if (_hasListeners) {
+        [self sendEventWithName:@"sensorsEvent" body:body];
+    }
 }
 
 // Will be called when this module's first listener is added.
 - (void)startObserving {
     // Set up any upstream listeners or background tasks as necessary
+    _hasListeners = YES;
 }
 
 // Will be called when this module's last listener is removed, or on dealloc.
 - (void)stopObserving {
     // Remove upstream listeners, stop unnecessary background tasks
     // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+    _hasListeners = NO;
 }
 
 - (double)sensorTimestamp:(NSTimeInterval)timestamp {
@@ -46,8 +51,8 @@ RCT_EXPORT_MODULE();
 }
 
 RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject) {
+            resolve:(RCTPromiseResolveBlock)resolve
+            reject:(RCTPromiseRejectBlock)reject) {
     MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
     if (sensorObject != nil) {
         BOOL available = [sensorObject isAvailable];
@@ -58,7 +63,7 @@ RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
 }
 
 RCT_EXPORT_METHOD(setInterval:(NSString *)sensor
-                  newInterval:(double)newInterval) {
+            newInterval:(double)newInterval) {
     MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
     if (sensorObject != nil) {
         [sensorObject setInterval:newInterval];

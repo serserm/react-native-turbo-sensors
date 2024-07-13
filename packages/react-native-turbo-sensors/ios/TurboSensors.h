@@ -3,9 +3,10 @@
 #ifdef RCT_NEW_ARCH_ENABLED
 #import "RNTurboSensorsSpec.h"
 
-@interface TurboSensors : RCTEventEmitter <NativeTurboSensorsSpec> {
-    NSMutableDictionary * _sensorMap;
-}
+@interface TurboSensors : RCTEventEmitter <NativeTurboSensorsSpec>
+
+@property (nonatomic, assign) BOOL hasListeners;
+@property (nonatomic, strong) NSMutableDictionary *sensorMap;
 
 - (double)sensorTimestamp:(NSTimeInterval)timestamp;
 
@@ -14,9 +15,10 @@
 #else
 #import <React/RCTBridgeModule.h>
 
-@interface TurboSensors : RCTEventEmitter <RCTBridgeModule> {
-    NSMutableDictionary * _sensorMap;
-}
+@interface TurboSensors : RCTEventEmitter <RCTBridgeModule>
+
+@property (nonatomic, assign) BOOL hasListeners;
+@property (nonatomic, strong) NSMutableDictionary *sensorMap;
 
 - (double)sensorTimestamp:(NSTimeInterval)timestamp;
 
