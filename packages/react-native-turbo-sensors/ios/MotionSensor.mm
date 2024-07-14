@@ -163,9 +163,10 @@
                     }];
                 return;
             }
+            double timestamp = [_delegate sensorTimestamp:altitudeData.timestamp];
             [_delegate sendEvent:@{
-                    @"value" : altitudeData.pressure,
-//                     @"timestamp" : [NSNumber numberWithDouble:timestamp],
+                    @"value" : [altitudeData.pressure doubleValue] * 10.0,
+                    @"timestamp" : [NSNumber numberWithDouble:timestamp],
                     @"name" : _sensorName,
                     @"type" : @"onChanged"
                 }];

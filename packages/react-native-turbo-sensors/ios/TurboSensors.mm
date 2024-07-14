@@ -14,7 +14,8 @@ RCT_EXPORT_MODULE();
         [_sensorMap setObject:[[MotionSensor alloc] init:@"magnetometer" delegate:self] forKey:@"magnetometer"];
         [_sensorMap setObject:[[MotionSensor alloc] init:@"gravity" delegate:self] forKey:@"gravity"];
         [_sensorMap setObject:[[MotionSensor alloc] init:@"rotation" delegate:self] forKey:@"rotation"];
-        [_sensorMap setObject:[[MotionSensor alloc] init:@"acceleration" delegate:self] forKey:@"rotation"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"acceleration" delegate:self] forKey:@"acceleration"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"barometer" delegate:self] forKey:@"barometer"];
     }
     return self;
 }
