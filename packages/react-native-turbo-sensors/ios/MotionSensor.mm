@@ -81,7 +81,7 @@
             }
             double timestamp = [_delegate sensorTimestamp:accelerometerData.timestamp];
             [_delegate sendEvent:@{
-                    @"value" : @{
+                    @"data" : @{
                         @"x" : [NSNumber numberWithDouble:accelerometerData.acceleration.x],
                         @"y" : [NSNumber numberWithDouble:accelerometerData.acceleration.y],
                         @"z" : [NSNumber numberWithDouble:accelerometerData.acceleration.z]
@@ -109,7 +109,7 @@
             }
             double timestamp = [_delegate sensorTimestamp:gyroData.timestamp];
             [_delegate sendEvent:@{
-                    @"value" : @{
+                    @"data" : @{
                         @"x" : [NSNumber numberWithDouble:gyroData.rotationRate.x],
                         @"y" : [NSNumber numberWithDouble:gyroData.rotationRate.y],
                         @"z" : [NSNumber numberWithDouble:gyroData.rotationRate.z]
@@ -137,7 +137,7 @@
             }
             double timestamp = [_delegate sensorTimestamp:magnetometerData.timestamp];
             [_delegate sendEvent:@{
-                    @"value" : @{
+                    @"data" : @{
                         @"x" : [NSNumber numberWithDouble:magnetometerData.magneticField.x],
                         @"y" : [NSNumber numberWithDouble:magnetometerData.magneticField.y],
                         @"z" : [NSNumber numberWithDouble:magnetometerData.magneticField.z]
@@ -167,7 +167,7 @@
             double pressureInKpa = [altitudeData.pressure doubleValue];
             double pressureInHpa = pressureInKpa * 10.0;
             [_delegate sendEvent:@{
-                    @"value" : [NSNumber numberWithDouble:pressureInHpa],
+                    @"data" : [NSNumber numberWithDouble:pressureInHpa],
                     @"timestamp" : [NSNumber numberWithDouble:timestamp],
                     @"name" : _sensorName,
                     @"type" : @"onChanged"
@@ -189,7 +189,7 @@
             }
             double timestamp = [_delegate sensorTimestamp:deviceMotionData.timestamp];
             [_delegate sendEvent:@{
-                    @"value" : @{
+                    @"data" : @{
                         @"x" : [NSNumber numberWithDouble:deviceMotionData.gravity.x],
                         @"y" : [NSNumber numberWithDouble:deviceMotionData.gravity.y],
                         @"z" : [NSNumber numberWithDouble:deviceMotionData.gravity.z]
@@ -199,7 +199,7 @@
                     @"type" : @"onChanged"
                 }];
             [_delegate sendEvent:@{
-                    @"value" : @{
+                    @"data" : @{
                         @"qw" : [NSNumber numberWithDouble:deviceMotionData.attitude.quaternion.w],
                         @"qx" : [NSNumber numberWithDouble:deviceMotionData.attitude.quaternion.x],
                         @"qy" : [NSNumber numberWithDouble:deviceMotionData.attitude.quaternion.y],
@@ -213,7 +213,7 @@
                     @"type" : @"onChanged"
                 }];
             [_delegate sendEvent:@{
-                    @"value" : @{
+                    @"data" : @{
                         @"x" : [NSNumber numberWithDouble:deviceMotionData.userAcceleration.x],
                         @"y" : [NSNumber numberWithDouble:deviceMotionData.userAcceleration.y],
                         @"z" : [NSNumber numberWithDouble:deviceMotionData.userAcceleration.z]

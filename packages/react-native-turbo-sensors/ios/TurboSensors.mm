@@ -62,6 +62,14 @@ RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
     if (sensorObject != nil) {
         BOOL available = [sensorObject isAvailable];
         resolve(@(available));
+    } else if ([sensor isEqualToString:@"proximity"]) {
+        resolve(@NO);
+    } else if ([sensor isEqualToString:@"light"]) {
+        resolve(@NO);
+    } else if ([sensor isEqualToString:@"temperature"]) {
+        resolve(@NO);
+    } else if ([sensor isEqualToString:@"humidity"]) {
+        resolve(@NO);
     } else {
         reject(@"sensor_not_found", @"Sensor not found", nil);
     }
