@@ -17,16 +17,16 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 public class TurboSensor implements SensorEventListener {
   private ReactApplicationContext reactContext;
 
-  private final String name;
+  private final String sensorName;
   private final Sensor sensor;
   private final int sensorType;
   private final SensorManager sensorManager;
-  private int interval = SensorManager.SENSOR_DELAY_NORMAL;
+  private int interval = 200000;
   private boolean isListenerRegistered = false;
 
   TurboSensor(ReactApplicationContext context, String sensorName) {
     this.reactContext = context;
-    this.name = sensorName;
+    this.sensorName = sensorName;
     this.sensorType = getType(sensorName);
     this.sensorManager = (SensorManager) context.getSystemService(reactContext.SENSOR_SERVICE);
     this.sensor = sensorManager.getDefaultSensor(sensorType);
@@ -34,36 +34,40 @@ public class TurboSensor implements SensorEventListener {
 
   @Override
   public void onSensorChanged(SensorEvent sensorEvent) {
-    sendEvent(name + "Event", getParams(sensorEvent));
+    sendEvent(getParams(sensorEvent));
   }
 
   @Override
   public void onAccuracyChanged(Sensor sensor, int accuracy) {
   }
 
-  private void sendEvent(String eventName,
-                         @Nullable WritableMap params) {
+  private void sendEvent(@Nullable WritableMap params) {
     reactContext
         .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-        .emit(eventName, params);
+        .emit("sensorsEvent", params);
   }
 
   private int getType(String sensorName) {
     switch (sensorName) {
+      // Motion sensors
       case "accelerometer":
         return Sensor.TYPE_ACCELEROMETER;
-      case "gravity":
-        return Sensor.TYPE_GRAVITY;
       case "gyroscope":
         return Sensor.TYPE_GYROSCOPE;
       case "magnetometer":
         return Sensor.TYPE_MAGNETIC_FIELD;
-      case "barometer":
-        return Sensor.TYPE_PRESSURE;
+      case "gravity":
+        return Sensor.TYPE_GRAVITY;
+      case "rotation":
+        return Sensor.TYPE_ROTATION_VECTOR;
       case "acceleration":
         return Sensor.TYPE_LINEAR_ACCELERATION;
+      // Position sensors
       case "proximity":
         return Sensor.TYPE_PROXIMITY;
+      // Environment sensors
+      case "barometer":
+        return Sensor.TYPE_PRESSURE;
       case "light":
         return Sensor.TYPE_LIGHT;
       case "temperature":
@@ -71,18 +75,8 @@ public class TurboSensor implements SensorEventListener {
       case "humidity":
         return Sensor.TYPE_RELATIVE_HUMIDITY;
       default:
-        return Sensor.TYPE_ROTATION_VECTOR;
+        return Sensor.TYPE_ALL;
     }
-    // TYPE_STEP_DETECTOR
-    // TYPE_STEP_COUNTER
-    // TYPE_STATIONARY_DETECT
-    // TYPE_SIGNIFICANT_MOTION
-    // TYPE_MOTION_DETECT
-    // TYPE_HINGE_ANGLE
-    // TYPE_HEART_RATE
-    // TYPE_HEART_BEAT
-    // TYPE_HEAD_TRACKER
-    // TYPE_HEADING
   }
 
   private double sensorTimestampToEpochMilliseconds(long elapsedTime) {
@@ -94,7 +88,7 @@ public class TurboSensor implements SensorEventListener {
     int currentType = sensorEvent.sensor.getType();
     double tempMs = (double) System.currentTimeMillis();
     WritableMap params = Arguments.createMap();
-    WritableMap value = Arguments.createMap();
+    WritableMap data = Arguments.createMap();
 
     switch (currentType) {
       case Sensor.TYPE_ROTATION_VECTOR:
@@ -105,35 +99,36 @@ public class TurboSensor implements SensorEventListener {
         SensorManager.getRotationMatrixFromVector(rotation, sensorEvent.values);
         SensorManager.getOrientation(rotation, orientation);
 
-        value.putDouble("qw", quaternion[0]);
-        value.putDouble("qx", quaternion[1]);
-        value.putDouble("qy", quaternion[2]);
-        value.putDouble("qz", quaternion[3]);
+        data.putDouble("qw", quaternion[0]);
+        data.putDouble("qx", quaternion[1]);
+        data.putDouble("qy", quaternion[2]);
+        data.putDouble("qz", quaternion[3]);
 
-        value.putDouble("yaw", orientation[0]);
-        value.putDouble("pitch", orientation[1]);
-        value.putDouble("roll", orientation[2]);
+        data.putDouble("yaw", orientation[0]);
+        data.putDouble("pitch", orientation[1]);
+        data.putDouble("roll", orientation[2]);
 
-        params.putMap("value", value);
+        params.putMap("data", data);
         break;
       case Sensor.TYPE_ACCELEROMETER:
       case Sensor.TYPE_GRAVITY:
       case Sensor.TYPE_GYROSCOPE:
       case Sensor.TYPE_MAGNETIC_FIELD:
       case Sensor.TYPE_LINEAR_ACCELERATION:
-        value.putDouble("x", sensorEvent.values[0]);
-        value.putDouble("y", sensorEvent.values[1]);
-        value.putDouble("z", sensorEvent.values[2]);
+        data.putDouble("x", sensorEvent.values[0]);
+        data.putDouble("y", sensorEvent.values[1]);
+        data.putDouble("z", sensorEvent.values[2]);
 
-        params.putMap("value", value);
+        params.putMap("data", data);
         break;
       default:
-        params.putDouble("value", sensorEvent.values[0]);
+        params.putDouble("data", sensorEvent.values[0]);
         break;
     }
 
     params.putDouble("timestamp", sensorTimestampToEpochMilliseconds(sensorEvent.timestamp));
-    params.putString("name", name);
+    params.putString("name", sensorName);
+    params.putString("type", "onChanged");
 
     return params;
   }
@@ -143,20 +138,41 @@ public class TurboSensor implements SensorEventListener {
   }
 
   public void startListening() {
-    if (!isListenerRegistered && sensorManager != null && sensor != null) {
+    if (!isAvailable()) {
+      WritableMap params = Arguments.createMap();
+      params.putInt("errorCode", 1);
+      params.putString("errorMessage", "Not available");
+      params.putString("name", sensorName);
+      params.putString("type", "onError");
+      sendEvent(params);
+      return;
+    }
+    if (!isListenerRegistered && sensorManager != null) {
       sensorManager.registerListener(this, sensor, interval);
       isListenerRegistered = true;
     }
   }
 
   public void stopListening() {
-    if (isListenerRegistered && sensorManager != null && sensor != null) {
+    if (!isAvailable()) {
+      return;
+    }
+    if (isListenerRegistered && sensorManager != null) {
       sensorManager.unregisterListener(this);
       isListenerRegistered = false;
     }
   }
 
   public void setInterval(int newInterval) {
+    if (!isAvailable()) {
+      WritableMap params = Arguments.createMap();
+      params.putInt("errorCode", 1);
+      params.putString("errorMessage", "Not available");
+      params.putString("name", sensorName);
+      params.putString("type", "onError");
+      sendEvent(params);
+      return;
+    }
     if (newInterval >= 0) {
       // Milliseconds to Microseconds conversion
       interval = newInterval * 1000;

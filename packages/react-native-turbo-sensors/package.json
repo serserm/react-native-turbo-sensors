@@ -34,7 +34,14 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "sensors",
+    "accelerometer",
+    "devicemotion",
+    "gyroscope",
+    "lightsensor",
+    "magnetometer",
+    "barometer"
   ],
   "repository": {
     "type": "git",

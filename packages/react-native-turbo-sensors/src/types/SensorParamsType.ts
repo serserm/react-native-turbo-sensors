@@ -1,7 +1,6 @@
-import type { SensorListenerType } from './SensorListenerType';
-import type { SensorName } from './SensorName';
+import type { ListenerType } from './ListenerType';
 
 export interface SensorParamsType {
-  sensor: SensorName;
-  onChange?: SensorListenerType;
+  onError?: ListenerType;
+  onChanged?: ListenerType;
 }

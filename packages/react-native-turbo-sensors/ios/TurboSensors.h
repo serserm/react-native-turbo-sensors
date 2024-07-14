@@ -1,28 +1,29 @@
 #import <React/RCTEventEmitter.h>
-#import <CoreMotion/CoreMotion.h>
 
 #ifdef RCT_NEW_ARCH_ENABLED
 #import "RNTurboSensorsSpec.h"
 
-@interface TurboSensors : RCTEventEmitter <NativeTurboSensorsSpec> {
-  CMMotionManager *_motionManager;
-  bool hasListeners;
-}
+@interface TurboSensors : RCTEventEmitter <NativeTurboSensorsSpec>
+
+@property (nonatomic, assign) BOOL hasListeners;
+@property (nonatomic, strong) NSMutableDictionary *sensorMap;
+
+- (double)sensorTimestamp:(NSTimeInterval)timestamp;
+
+- (void)sendEvent:(id)body;
+
 #else
 #import <React/RCTBridgeModule.h>
 
-@interface TurboSensors : RCTEventEmitter <RCTBridgeModule> {
-  CMMotionManager *_motionManager;
-  bool hasListeners;
-}
+@interface TurboSensors : RCTEventEmitter <RCTBridgeModule>
 
-- (void)isAvailable:(NSString *)sensor
-            resolve:(RCTPromiseResolveBlock)resolve
-             reject:(RCTPromiseRejectBlock)reject;
-- (void)setInterval:(NSString *)sensor
-        newInterval:(double)newInterval;
-- (void)startListening:(NSString *)sensor;
-- (void)stopListening:(NSString *)sensor;
+@property (nonatomic, assign) BOOL hasListeners;
+@property (nonatomic, strong) NSMutableDictionary *sensorMap;
+
+- (double)sensorTimestamp:(NSTimeInterval)timestamp;
+
+- (void)sendEvent:(id)body;
+
 #endif
 
 @end

@@ -1,0 +1,30 @@
+{
+  "name": "react-native-turbo-sensors-example",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "codegen": "cd ./android && ./gradlew generateCodegenArtifactsFromSchema",
+    "clean": "del-cli android/build android/app/build ios/build",
+    "pod": "cd ios && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "apk": "cd android && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@serserm/react-native-turbo-sensors": "workspace:^",
+    "react": "18.2.0",
+    "react-native": "0.74.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/runtime": "^7.24.4",
+    "@react-native/babel-preset": "0.74.84",
+    "@react-native/metro-config": "0.74.84",
+    "babel-plugin-module-resolver": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -10,9 +10,9 @@ export interface Spec extends TurboModule {
 
   setInterval(sensor: string, newInterval: number): void;
 
-  startListening(sensor: string): void;
+  startSensor(sensor: string): void;
 
-  stopListening(sensor: string): void;
+  stopSensor(sensor: string): void;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('TurboSensors');

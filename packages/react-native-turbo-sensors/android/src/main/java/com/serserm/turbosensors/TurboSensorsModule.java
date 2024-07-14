@@ -23,18 +23,18 @@ public class TurboSensorsModule extends TurboSensorsSpec {
   TurboSensorsModule(ReactApplicationContext context) {
     super(context);
     reactContext = context;
-    sensorMap.put("orientationEvent", new TurboSensor(context, "orientation"));
-    sensorMap.put("rotationEvent", new TurboSensor(context, "rotation"));
-    sensorMap.put("accelerometerEvent", new TurboSensor(context, "accelerometer"));
-    sensorMap.put("gravityEvent", new TurboSensor(context, "gravity"));
-    sensorMap.put("gyroscopeEvent", new TurboSensor(context, "gyroscope"));
-    sensorMap.put("magnetometerEvent", new TurboSensor(context, "magnetometer"));
-    sensorMap.put("barometerEvent", new TurboSensor(context, "barometer"));
-    sensorMap.put("accelerationEvent", new TurboSensor(context, "acceleration"));
-    sensorMap.put("proximityEvent", new TurboSensor(context, "proximity"));
-    sensorMap.put("lightEvent", new TurboSensor(context, "light"));
-    sensorMap.put("temperatureEvent", new TurboSensor(context, "temperature"));
-    sensorMap.put("humidityEvent", new TurboSensor(context, "humidity"));
+    sensorMap.put("orientation", new TurboSensor(context, "orientation"));
+    sensorMap.put("rotation", new TurboSensor(context, "rotation"));
+    sensorMap.put("accelerometer", new TurboSensor(context, "accelerometer"));
+    sensorMap.put("gravity", new TurboSensor(context, "gravity"));
+    sensorMap.put("gyroscope", new TurboSensor(context, "gyroscope"));
+    sensorMap.put("magnetometer", new TurboSensor(context, "magnetometer"));
+    sensorMap.put("barometer", new TurboSensor(context, "barometer"));
+    sensorMap.put("acceleration", new TurboSensor(context, "acceleration"));
+    sensorMap.put("proximity", new TurboSensor(context, "proximity"));
+    sensorMap.put("light", new TurboSensor(context, "light"));
+    sensorMap.put("temperature", new TurboSensor(context, "temperature"));
+    sensorMap.put("humidity", new TurboSensor(context, "humidity"));
   }
 
   @Override
@@ -67,7 +67,7 @@ public class TurboSensorsModule extends TurboSensorsSpec {
 
   @ReactMethod
   public void isAvailable(String sensor, Promise promise) {
-    TurboSensor sensorT = sensorMap.get(sensor + "Event");
+    TurboSensor sensorT = sensorMap.get(sensor);
     if (sensorT != null) {
       promise.resolve(sensorT.isAvailable());
       return;
@@ -78,23 +78,23 @@ public class TurboSensorsModule extends TurboSensorsSpec {
 
   @ReactMethod
   public void setInterval(String sensor, double newInterval) {
-    TurboSensor sensorT = sensorMap.get(sensor + "Event");
+    TurboSensor sensorT = sensorMap.get(sensor);
     if (sensorT != null) {
       sensorT.setInterval((int) newInterval);
     }
   }
 
   @ReactMethod
-  public void startListening(String sensor) {
-    TurboSensor sensorT = sensorMap.get(sensor + "Event");
+  public void startSensor(String sensor) {
+    TurboSensor sensorT = sensorMap.get(sensor);
     if (sensorT != null) {
       sensorT.startListening();
     }
   }
 
   @ReactMethod
-  public void stopListening(String sensor) {
-    TurboSensor sensorT = sensorMap.get(sensor + "Event");
+  public void stopSensor(String sensor) {
+    TurboSensor sensorT = sensorMap.get(sensor);
     if (sensorT != null) {
       sensorT.stopListening();
     }

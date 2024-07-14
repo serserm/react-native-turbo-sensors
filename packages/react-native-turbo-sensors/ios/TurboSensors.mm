@@ -1,82 +1,100 @@
 #import "TurboSensors.h"
+#import "MotionSensor.h"
 
 @implementation TurboSensors
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE();
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _hasListeners = NO;
+        _sensorMap = [NSMutableDictionary dictionary];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"accelerometer" delegate:self] forKey:@"accelerometer"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"gyroscope" delegate:self] forKey:@"gyroscope"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"magnetometer" delegate:self] forKey:@"magnetometer"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"gravity" delegate:self] forKey:@"gravity"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"rotation" delegate:self] forKey:@"rotation"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"acceleration" delegate:self] forKey:@"acceleration"];
+        [_sensorMap setObject:[[MotionSensor alloc] init:@"barometer" delegate:self] forKey:@"barometer"];
+    }
+    return self;
+}
+
++ (BOOL)requiresMainQueueSetup {
+    return NO;
+}
 
 - (NSArray<NSString *> *)supportedEvents {
-  return @[@"accelerometerEvent"];
+    return @[@"sensorsEvent"];
 }
 
-- (void)sendEvent:(NSString *)eventName body:(id)body {
-  [self sendEventWithName:eventName body:body];
-}
-
-// Will be called when this module's first listener is added.
--(void)startObserving {
-    hasListeners = YES;
-    // Set up any upstream listeners or background tasks as necessary
-}
-
-// Will be called when this module's last listener is removed, or on dealloc.
--(void)stopObserving {
-    // Remove upstream listeners, stop unnecessary background tasks
-    hasListeners = NO;
-    // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
-    if (self->_motionManager) {
-//         [self stopListening];
+- (void)sendEvent:(id)body {
+    if (_hasListeners) {
+        [self sendEventWithName:@"sensorsEvent" body:body];
     }
 }
 
+// Will be called when this module's first listener is added.
+- (void)startObserving {
+    // Set up any upstream listeners or background tasks as necessary
+    _hasListeners = YES;
+}
+
+// Will be called when this module's last listener is removed, or on dealloc.
+- (void)stopObserving {
+    // Remove upstream listeners, stop unnecessary background tasks
+    // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+    for (NSString *key in _sensorMap) {
+        MotionSensor *sensor = [_sensorMap objectForKey:key];
+        [sensor stopListening];
+    }
+    _hasListeners = NO;
+}
+
+- (double)sensorTimestamp:(NSTimeInterval)timestamp {
+    return floor(([[NSDate date] timeIntervalSince1970] + (timestamp - [[NSProcessInfo processInfo] systemUptime])) * 1000);
+}
+
 RCT_EXPORT_METHOD(isAvailable:(NSString *)sensor
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject) {
-    resolve(@YES);
-//     if([self->_motionManager isAccelerometerAvailable])
-//     {
-//         /* Start the accelerometer if it is not active already */
-//         if([self->_motionManager isAccelerometerActive] == NO)
-//         {
-//             resolve(@YES);
-//         } else {
-//             reject(@"-1", @"Accelerometer is not active", nil);
-//         }
-//     }
-//     else
-//     {
-//         reject(@"-1", @"Accelerometer is not available", nil);
-//     }
+            resolve:(RCTPromiseResolveBlock)resolve
+            reject:(RCTPromiseRejectBlock)reject) {
+    MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
+    if (sensorObject != nil) {
+        BOOL available = [sensorObject isAvailable];
+        resolve(@(available));
+    } else if ([sensor isEqualToString:@"proximity"]) {
+        resolve(@NO);
+    } else if ([sensor isEqualToString:@"light"]) {
+        resolve(@NO);
+    } else if ([sensor isEqualToString:@"temperature"]) {
+        resolve(@NO);
+    } else if ([sensor isEqualToString:@"humidity"]) {
+        resolve(@NO);
+    } else {
+        reject(@"sensor_not_found", @"Sensor not found", nil);
+    }
 }
 
 RCT_EXPORT_METHOD(setInterval:(NSString *)sensor
-                  newInterval:(double)newInterval) {
-//   double intervalInSeconds = newInterval / 1000;
-//
-//   [self->_motionManager setAccelerometerUpdateInterval:intervalInSeconds];
+            newInterval:(double)newInterval) {
+    MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
+    if (sensorObject != nil) {
+        [sensorObject setInterval:newInterval];
+    }
 }
 
 RCT_EXPORT_METHOD(startListening:(NSString *)sensor) {
-//   [self->_motionManager startAccelerometerUpdates];
-//
-//   /* Receive the accelerometer data on this block */
-//   [self->_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue mainQueue]
-//                                            withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
-//   {
-//      double x = accelerometerData.acceleration.x;
-//      double y = accelerometerData.acceleration.y;
-//      double z = accelerometerData.acceleration.z;
-//      double timestamp = [RNSensorsUtils sensorTimestampToEpochMilliseconds:accelerometerData.timestamp];
-//
-//      [self sendEvent:@"RNSensorsAccelerometer" body:@{
-//                                                        @"x" : [NSNumber numberWithDouble:x],
-//                                                        @"y" : [NSNumber numberWithDouble:y],
-//                                                        @"z" : [NSNumber numberWithDouble:z],
-//                                                        @"timestamp" : [NSNumber numberWithDouble:timestamp]
-//                                                    }];
-//   }];
+    MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
+    if (sensorObject != nil) {
+        [sensorObject startListening];
+    }
 }
 
 RCT_EXPORT_METHOD(stopListening:(NSString *)sensor) {
-// [self->_motionManager stopAccelerometerUpdates];
+    MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
+    if (sensorObject != nil) {
+        [sensorObject stopListening];
+    }
 }
 
 // Don't compile this code when we build for the old architecture.
