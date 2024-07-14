@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 
-import { Sensor } from './Sensor';
+import { Sensors } from './Sensors';
 import type { SensorParamsType, UseSensorType } from './types';
 
-export function useSensor(params: SensorParamsType): UseSensorType {
-  const sensor = useRef<Sensor>(new Sensor());
+export function useSensors(params: SensorParamsType): UseSensorType {
+  const sensor = useRef<Sensors>(new Sensors());
 
   useEffect(() => {
     sensor.current.startListening(

@@ -1,4 +1,4 @@
-export enum SensorNameType {
+export enum SensorName {
   accelerometer = 'accelerometer',
   gyroscope = 'gyroscope',
   magnetometer = 'magnetometer',

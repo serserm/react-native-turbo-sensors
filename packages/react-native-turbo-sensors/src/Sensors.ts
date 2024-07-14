@@ -1,9 +1,9 @@
 import { type EmitterSubscription, NativeEventEmitter } from 'react-native';
 
 import { TurboSensors } from './TurboSensors';
-import type { ListenerType, SensorNameType } from './types';
+import type { ListenerType, SensorName } from './types';
 
-export class Sensor {
+export class Sensors {
   #subscription?: EmitterSubscription;
 
   startListening = (listener: ListenerType) => {
@@ -17,19 +17,19 @@ export class Sensor {
     this.#subscription?.remove();
   };
 
-  isAvailable = (name: SensorNameType): Promise<boolean> => {
+  isAvailable = (name: SensorName): Promise<boolean> => {
     return TurboSensors.isAvailable(name);
   };
 
-  setInterval = (name: SensorNameType, interval: number): void => {
+  setInterval = (name: SensorName, interval: number): void => {
     TurboSensors.setInterval(name, interval);
   };
 
-  startSensor = (name: SensorNameType): void => {
+  startSensor = (name: SensorName): void => {
     TurboSensors.startSensor(name);
   };
 
-  stopSensor = (name: SensorNameType): void => {
+  stopSensor = (name: SensorName): void => {
     TurboSensors.stopSensor(name);
   };
 }
