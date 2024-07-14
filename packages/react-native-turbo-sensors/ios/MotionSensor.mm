@@ -164,8 +164,10 @@
                 return;
             }
             double timestamp = [_delegate sensorTimestamp:altitudeData.timestamp];
+            double pressureInKpa = [altitudeData.pressure doubleValue];
+            double pressureInHpa = pressureInKpa * 10.0;
             [_delegate sendEvent:@{
-                    @"value" : [altitudeData.pressure doubleValue] * 10.0,
+                    @"value" : [NSNumber numberWithDouble:pressureInHpa],
                     @"timestamp" : [NSNumber numberWithDouble:timestamp],
                     @"name" : _sensorName,
                     @"type" : @"onChanged"
