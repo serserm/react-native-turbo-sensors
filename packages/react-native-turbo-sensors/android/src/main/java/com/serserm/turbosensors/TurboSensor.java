@@ -34,18 +34,17 @@ public class TurboSensor implements SensorEventListener {
 
   @Override
   public void onSensorChanged(SensorEvent sensorEvent) {
-    sendEvent("sensorsEvent", getParams(sensorEvent));
+    sendEvent(getParams(sensorEvent));
   }
 
   @Override
   public void onAccuracyChanged(Sensor sensor, int accuracy) {
   }
 
-  private void sendEvent(String eventName,
-                         @Nullable WritableMap params) {
+  private void sendEvent(@Nullable WritableMap params) {
     reactContext
         .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-        .emit(eventName, params);
+        .emit("sensorsEvent", params);
   }
 
   private int getType(String sensorName) {
@@ -145,7 +144,7 @@ public class TurboSensor implements SensorEventListener {
       params.putString("errorMessage", "Not available");
       params.putString("name", sensorName);
       params.putString("type", "onError");
-      sendEvent("sensorsEvent", params);
+      sendEvent(params);
       return;
     }
     if (!isListenerRegistered && sensorManager != null) {
@@ -156,12 +155,6 @@ public class TurboSensor implements SensorEventListener {
 
   public void stopListening() {
     if (!isAvailable()) {
-      WritableMap params = Arguments.createMap();
-      params.putInt("errorCode", 1);
-      params.putString("errorMessage", "Not available");
-      params.putString("name", sensorName);
-      params.putString("type", "onError");
-      sendEvent("sensorsEvent", params);
       return;
     }
     if (isListenerRegistered && sensorManager != null) {
@@ -177,7 +170,7 @@ public class TurboSensor implements SensorEventListener {
       params.putString("errorMessage", "Not available");
       params.putString("name", sensorName);
       params.putString("type", "onError");
-      sendEvent("sensorsEvent", params);
+      sendEvent(params);
       return;
     }
     if (newInterval >= 0) {
