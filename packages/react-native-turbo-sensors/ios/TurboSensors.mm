@@ -43,6 +43,10 @@ RCT_EXPORT_MODULE();
 - (void)stopObserving {
     // Remove upstream listeners, stop unnecessary background tasks
     // If we no longer have listeners registered we should also probably also stop the sensor since the sensor events are essentially being dropped.
+    for (NSString *key in _sensorMap) {
+        MotionSensor *sensor = [_sensorMap objectForKey:key];
+        [sensor stopListening];
+    }
     _hasListeners = NO;
 }
 

@@ -225,12 +225,6 @@
 
 - (void)stopListening {
     if (![self isAvailable]) {
-        [_delegate sendEvent:@{
-                @"errorCode" : @1,
-                @"errorMessage" : @"Not available",
-                @"name" : _sensorName,
-                @"type" : @"onError"
-            }];
         return;
     }
     if ([_sensorName isEqualToString:@"accelerometer"]) {
