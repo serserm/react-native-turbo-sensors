@@ -10,7 +10,7 @@
         _altimeter = [[CMAltimeter alloc] init];
         _sensorName = [sensorName copy];
         _hasListeners = NO;
-        _intervalInSeconds = 0.1;
+        _intervalInSeconds = 0.2;
     }
     return self;
 }
