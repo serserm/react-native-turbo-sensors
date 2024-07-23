@@ -36,12 +36,18 @@
     "ios",
     "android",
     "sensors",
-    "accelerometer",
     "devicemotion",
+    "accelerometer",
     "gyroscope",
-    "lightsensor",
     "magnetometer",
-    "barometer"
+    "gravity",
+    "rotation",
+    "acceleration",
+    "barometer",
+    "proximity",
+    "light",
+    "temperature",
+    "humidity"
   ],
   "repository": {
     "type": "git",
