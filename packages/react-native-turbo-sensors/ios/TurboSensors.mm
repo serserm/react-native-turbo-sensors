@@ -83,14 +83,14 @@ RCT_EXPORT_METHOD(setInterval:(NSString *)sensor
     }
 }
 
-RCT_EXPORT_METHOD(startListening:(NSString *)sensor) {
+RCT_EXPORT_METHOD(startSensor:(NSString *)sensor) {
     MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
     if (sensorObject != nil) {
         [sensorObject startListening];
     }
 }
 
-RCT_EXPORT_METHOD(stopListening:(NSString *)sensor) {
+RCT_EXPORT_METHOD(stopSensor:(NSString *)sensor) {
     MotionSensor *sensorObject = [_sensorMap objectForKey:sensor];
     if (sensorObject != nil) {
         [sensorObject stopListening];
