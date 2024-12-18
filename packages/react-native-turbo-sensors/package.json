@@ -1,6 +1,6 @@
 {
   "name": "@serserm/react-native-turbo-sensors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A developer friendly approach for sensors in react-native",
   "author": "serserm (https://github.com/serserm)",
   "license": "MIT",
